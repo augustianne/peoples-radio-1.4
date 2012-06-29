@@ -14,7 +14,7 @@ h2 { font-size: 1.6em; margin-bottom: 20px; color: #ec1447; text-shadow: 2px 2px
 h3 { font-size: 17px; margin-bottom:  10px; color: #aaa;  text-shadow: 2px 2px 2px rgba(0,0,0,0.5); }
 h4 { font-size: 17px; color: #41B7D8; font-weight: normal; line-height: 19px; font-family: 'Pontano Sans', sans-serif;  }
 
-a { color: #41B7D8; cursor: pointer; text-decoration: none; }
+a { color: #41B7D8; cursor: pointer; text-decoration: none; font-size: 12px; position: relative; }
 a:hover { text-decoration: underline; }
 
 p { color: #777; }
@@ -60,8 +60,10 @@ div.sml    { display: none; }
 .radio em { font: italic 12px 'Pontano Sans',sans-serif; display: block; color: #888; }
 
 .que li { border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 5px 0; overflow: hidden; line-height: 22px; }
-.que li span, .que li h4  { float: left; margin-right: 20px; }
-.que li h4 em, .que li span { font-size: 15px; color: #999; margin-left: 10px; }
+.que li h4  { float: left; margin-right: 10; width: 270px; }
+#vote_queue h4 { width: auto; }
+.que li h4 em { font-size: 15px; color: #999; margin-left: 10px; }
+.que li span { width: 85px; font-size: 15px; color: #999; margin:0 10px; }
 .que li:first-child { border-top: none; }
 .que li:last-child { border-bottom: none; }
 .side .que ul { background-color: #fff; border-radius:4px; }
