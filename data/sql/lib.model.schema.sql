@@ -1,0 +1,60 @@
+
+# This is a fix for InnoDB in MySQL >= 4.1.x
+# It "suspends judgement" for fkey relationships until are tables are set.
+SET FOREIGN_KEY_CHECKS = 0;
+
+#-----------------------------------------------------------------------------
+#-- community
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `community`;
+
+
+CREATE TABLE `community`
+(
+	`track_id` INTEGER(11)  NOT NULL,
+	`play_count` SMALLINT(6),
+	PRIMARY KEY (`track_id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- track
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `track`;
+
+
+CREATE TABLE `track`
+(
+	`id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
+	`filename` VARCHAR(255)  NOT NULL,
+	`name` VARCHAR(255),
+	`artist` VARCHAR(255),
+	`time` VARCHAR(10),
+	`genre` VARCHAR(45),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- track_vote
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `track_vote`;
+
+
+CREATE TABLE `track_vote`
+(
+	`track_id` INTEGER(10)  NOT NULL,
+	`all_votes` INTEGER(11),
+	`temp_votes` INTEGER(11),
+	PRIMARY KEY (`track_id`),
+	KEY `track_vote_id`(`track_id`),
+	CONSTRAINT `track_vote_FK_1`
+		FOREIGN KEY (`track_id`)
+		REFERENCES `track` (`id`)
+		ON UPDATE RESTRICT
+		ON DELETE RESTRICT
+)Type=InnoDB;
+
+# This restores the fkey checks, after having unset them earlier
+SET FOREIGN_KEY_CHECKS = 1;

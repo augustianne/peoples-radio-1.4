@@ -1,0 +1,8 @@
+<ul>
+	<?php foreach($pager->getResults() as $iList): ?>
+		<li>
+			<span class="fl"><img src="/images/timer.png" border="0" alt="Duration:" class="fl mr5"> <?php echo $iList->getTime(); ?></span>
+			<h4><img src="/images/song.png" border="0" alt="Song:" class="fl mr10"> <?php echo $iList->getName(); ?> <em><small class="mr5">by</small> <?php echo $iList->getArtist(); ?></em></h4>
+		</li>
+   	<?php endforeach; ?>
+</ul>

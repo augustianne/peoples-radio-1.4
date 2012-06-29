@@ -1,0 +1,22 @@
+propel:
+  _attributes:
+    package: lib.model
+    defaultIdMethod: native
+  community:
+    _attributes: { phpName: Community }
+    track_id: { phpName: TrackId, type: INTEGER, size: '11', primaryKey: true, required: true }
+    play_count: { phpName: PlayCount, type: SMALLINT, size: '6', required: false }
+  track:
+    _attributes: { phpName: Track }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    filename: { phpName: Filename, type: VARCHAR, size: '255', required: true }
+    name: { phpName: Name, type: VARCHAR, size: '255', required: false }
+    artist: { phpName: Artist, type: VARCHAR, size: '255', required: false }
+    time: { phpName: Time, type: VARCHAR, size: '10', required: false }
+    genre: { phpName: Genre, type: VARCHAR, size: '45', required: false }
+  track_vote:
+    _attributes: { phpName: TrackVote }
+    track_id: { phpName: TrackId, type: INTEGER, size: '10', primaryKey: true, required: true, foreignTable: track, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    all_votes: { phpName: AllVotes, type: INTEGER, size: '11', required: false }
+    temp_votes: { phpName: TempVotes, type: INTEGER, size: '11', required: false }
+    _indexes: { track_vote_id: [track_id] }
