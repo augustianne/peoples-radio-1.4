@@ -9,7 +9,7 @@
 		</article>
 	</div> 
 </div>
-<?php include_partial('main/sidebar'); ?>
+<?php include_partial('main/sidebar', array('room' => $sf_params->get('room'))); ?>
 <div id="chat"> 
 	<div class="cht">
 		<ul>

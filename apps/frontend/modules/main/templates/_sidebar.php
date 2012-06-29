@@ -16,7 +16,7 @@
 					</h3>
 				</div>                     
 				<audio controls="controls" autoplay="autoplay">
-                  <source src="http://streaming.com.local:8181/sample.playlist" type="audio/mpeg" />
+                  <source src="http://www.icecast-streaming.com.local:8181/<?php echo $room; ?>" type="audio/mpeg" />
                 </audio>
 			</div>
 			<h3>Playlist</h3> 
