@@ -123,7 +123,26 @@ class mainActions extends sfActions
   */
   public function executeReadMp3(sfWebRequest $request)
   {
-	var_dump(MP3_Reader::readMp3(sfConfig::get('sf_upload_dir').'/assests'));
+	$tracks = MP3_Reader::readMp3(sfConfig::get('sf_upload_dir').'/assets/tracks');
+	$coverDir = sfConfig::get('sf_upload_dir').'/assets/cover';
+	foreach($tracks as $track){                    
+		$cover = '';
+		if (!is_null($track['cover'])) {                                          
+			$cover = $track['name'].'.'.$track['extension'];
+			file_put_contents($coverDir.'/'.$cover, $track['cover']);
+		}
+
+		$c = new Criteria;
+		$c->add(TrackPeer::FILENAME, $track['filename']);
+		$c->add(TrackPeer::NAME, $track['name']);
+		$c->add(TrackPeer::ARTIST, $track['artist']);
+		$c->add(TrackPeer::TIME, $track['length']);
+		$c->add(TrackPeer::GENRE, $track['genre']);
+		$c->add(TrackPeer::COVER, $cover);
+		
+		TrackPeer::doInsert($c);
+	}   
+	
 	return sfView::NONE;
   }
 

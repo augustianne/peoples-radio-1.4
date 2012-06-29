@@ -22,6 +22,7 @@ class TrackPeer extends BaseTrackPeer {
 		$criteria = new Criteria();
 		$criteria->addJoin(TrackPeer::ID, CommunityPeer::TRACK_ID, Criteria::LEFT_JOIN);
 		$criteria->add(CommunityPeer::TRACK_ID, NULL, Criteria::ISNULL);
+		$criteria->addDescendingOrderByColumn('RAND()');
 		
 		return $criteria;
 	}

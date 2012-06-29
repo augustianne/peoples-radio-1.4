@@ -14,6 +14,7 @@ propel:
     artist: { phpName: Artist, type: VARCHAR, size: '255', required: false }
     time: { phpName: Time, type: VARCHAR, size: '10', required: false }
     genre: { phpName: Genre, type: VARCHAR, size: '45', required: false }
+    cover: { phpName: Cover, type: VARCHAR, size: '300', required: false }
   track_vote:
     _attributes: { phpName: TrackVote }
     track_id: { phpName: TrackId, type: INTEGER, size: '10', primaryKey: true, required: true, foreignTable: track, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }

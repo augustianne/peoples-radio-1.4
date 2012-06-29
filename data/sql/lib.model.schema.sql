@@ -32,6 +32,7 @@ CREATE TABLE `track`
 	`artist` VARCHAR(255),
 	`time` VARCHAR(10),
 	`genre` VARCHAR(45),
+	`cover` VARCHAR(300),
 	PRIMARY KEY (`id`)
 )Type=InnoDB;
 

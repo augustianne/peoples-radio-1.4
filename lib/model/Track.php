@@ -18,4 +18,8 @@
  */
 class Track extends BaseTrack {
 
+	public function getCoverArt(){
+		return '/uploads/assets/cover/'.$this->getCover();
+	}
+	
 } // Track
