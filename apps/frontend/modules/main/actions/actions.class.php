@@ -160,8 +160,13 @@ class mainActions extends sfActions
 		$community->save();
 
 		mpd_add_track($track->getFilename(), $this->channel->getPort());
+	}             
+	   
+	$currentTrack = mpd_get_current_track($this->channel->getPort());
+	var_dump($currentTrack);
+	if(!empty($currentTrack)){
+		mpc_play($this->channel->getPort());
 	}
-	
   }
 
  /**

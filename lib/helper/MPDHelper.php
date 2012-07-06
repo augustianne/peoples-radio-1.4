@@ -31,3 +31,8 @@
 	{
 		shell_exec("mpd $confiPath");
 	}
+	
+	function mpc_play($port)
+	{
+		shell_exec("mpc -p $port play");
+	}
