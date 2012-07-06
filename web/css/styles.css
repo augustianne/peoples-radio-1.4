@@ -82,7 +82,7 @@ h2.chn a { font-size: 20px; color: #fff; }
 .radio h3 { color: #fff; letter-spacing: 0; margin: 0; }
 .radio em { font: italic 12px 'Pontano Sans',sans-serif; display: block; color: #888; }
 .radio img { width: 300px; margin-bottom: 10px;}
-.player { float:left; width: 220px; }
+.player { float:left; width: 300px; height: 32px; background-color: #000; }
 
 .que li { border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 5px 0; overflow: hidden; line-height: 22px; }
 .que li h4  { float: left; margin-right: 10; width: 180px; word-wrap: break-word; }
