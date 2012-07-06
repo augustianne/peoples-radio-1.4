@@ -42,6 +42,7 @@ CREATE TABLE `channel`
 (
 	`id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(300),
+	`icecast_port` VARCHAR(4),
 	`port` VARCHAR(4),
 	`slug` VARCHAR(300),
 	PRIMARY KEY (`id`)

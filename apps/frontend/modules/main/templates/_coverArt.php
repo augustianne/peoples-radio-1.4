@@ -6,4 +6,4 @@
 		<em><small class="mr5">by</small> <?php echo mpd_get_current_track_info($channel->getPort(), 'artist'); ?></em>
 		<em><?php echo mpd_get_current_track_info($channel->getPort(), 'album'); ?></em>
 	</h3>
-</div>                     
+</div>

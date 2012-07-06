@@ -13,6 +13,7 @@ propel:
     _attributes: { phpName: Channel }
     id: { phpName: Id, type: INTEGER, size: '11', autoIncrement: true, primaryKey: true, required: true }
     name: { phpName: Name, type: VARCHAR, size: '300', required: false }
+    icecast_port: { phpName: IcecastPort, type: VARCHAR, size: '4', required: false }
     port: { phpName: Port, type: VARCHAR, size: '4', required: false }
     slug: { phpName: Slug, type: VARCHAR, size: '300', required: false }
   channel_track:

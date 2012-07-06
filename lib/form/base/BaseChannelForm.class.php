@@ -16,6 +16,7 @@ abstract class BaseChannelForm extends BaseFormPropel
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
       'name'            => new sfWidgetFormInputText(),
+      'icecast_port'    => new sfWidgetFormInputText(),
       'port'            => new sfWidgetFormInputText(),
       'slug'            => new sfWidgetFormInputText(),
       'community_list'  => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Track')),
@@ -25,6 +26,7 @@ abstract class BaseChannelForm extends BaseFormPropel
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
       'name'            => new sfValidatorString(array('max_length' => 300, 'required' => false)),
+      'icecast_port'    => new sfValidatorString(array('max_length' => 4, 'required' => false)),
       'port'            => new sfValidatorString(array('max_length' => 4, 'required' => false)),
       'slug'            => new sfValidatorString(array('max_length' => 300, 'required' => false)),
       'community_list'  => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Track', 'required' => false)),

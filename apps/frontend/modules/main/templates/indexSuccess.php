@@ -1,8 +1,8 @@
 <div id="container" class="grid_8">
 	<ul class="sml bd">
-		<li class="room">A Room Title</li>
-		<li class="user">1020 Listeners</li>
-		<li class="last"><a href="#">Change Channel</a></li>
+		<li class="room"><?php echo $channel->getName(); ?></li>
+		<li class="user" id="listeners"><?php include_partial('main/listeners', array('channel' => $channel)); ?></li>
+		<li class="last"><a href="">Change Channel</a></li>
 	</ul>
 	<div class="liquid bd">
 		<article class="que">
@@ -28,4 +28,6 @@
 			</li>
 		</ul>
 	</div>
+</div>
+<div>
 </div>

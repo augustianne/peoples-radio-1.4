@@ -18,4 +18,19 @@
  */
 class CommunityPeer extends BaseCommunityPeer {
 
+	public static function prunePlaylist(Channel $channel=null){
+		sfProjectConfiguration::getActive()->loadHelpers('MPD');
+		$file = mpd_get_current_track_info($channel->getPort(), 'file');
+		$c = new Criteria();
+		$c->add(TrackPeer::FILENAME, trim($file));
+
+		$track = TrackPeer::doSelectOne($c);
+
+		if($track){
+			$communityTrack = CommunityPeer::retrieveByPK($track->getId(), $channel->getId());
+			if($communityTrack)
+				$communityTrack->delete();
+		}
+	}
+
 } // CommunityPeer

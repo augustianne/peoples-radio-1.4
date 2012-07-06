@@ -17,5 +17,17 @@
  * @package    lib.model
  */
 class Channel extends BaseChannel {
+	
+	public function getServer(){
+		return 'http://www.icecast-streaming.com.local:'.$this->getIcecastPort().'/'.$this->getSlug();
+	}
+
+	public function getNumberOfListeners(){
+		$icecast = new IcecastUtility($this->getServer());
+		$icecast->fetch();
+		$info = $icecast->getStatus();
+
+		return isset($info['listeners']) ? $info['listeners'] : null;
+	}
 
 } // Channel

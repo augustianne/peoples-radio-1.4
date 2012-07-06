@@ -52,8 +52,9 @@
 	$(function(){
 		$('.vote').vote(); 
 		$('#vote_queue').page_update( { url: '/main/updateVoteQueue', container: '#vote_queue' } );
-		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community ul', update_type: 'append' } );
+		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community ul' } );
 		$('#cover_art').page_update( { url: '/main/updateCoverArt', container: '#cover_art' } );
+<<<<<<< HEAD
 
 		$("#create-room-button").click(function(){
 			$("#create-room-modal").reveal();
@@ -74,6 +75,9 @@
 			});
 			return false;
 		});
+=======
+		$('#listeners').page_update( { url: '/main/updateListeners', container: '#listeners' } );
+>>>>>>> Changed tables and listeneres
 	});
 
 
