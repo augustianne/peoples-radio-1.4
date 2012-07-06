@@ -7,4 +7,4 @@
     	<input type="submit" value="SUBMIT" />
     </form>
     <a class="close-reveal-modal">&#215;</a>
-</div>
+</div>                                          

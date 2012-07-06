@@ -22,6 +22,10 @@ class Channel extends BaseChannel {
 		return 'http://www.icecast-streaming.com.local:'.$this->getIcecastPort().'/'.$this->getSlug();
 	}
 
+	public function getUrl(){
+		return '@channel?channel='.$this->getSlug();
+	}
+
 	public function getNumberOfListeners(){
 		$icecast = new IcecastUtility($this->getServer());
 		$icecast->fetch();

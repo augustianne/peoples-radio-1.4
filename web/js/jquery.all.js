@@ -60,6 +60,11 @@
 			$("#create-room-modal").reveal();
 		});
 
+		$("#change-room-button").click(function(){
+			$("#change-room-modal").reveal();
+			return false;
+		});
+
 		$("#create-room-form").submit(function(){
 			var postUrl = $(this).attr('action');
 			alert(postUrl);
