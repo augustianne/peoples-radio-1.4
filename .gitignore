@@ -4,3 +4,4 @@
 /vendor/symfony-1.4.18
 /cache
 /log
+.DS_Store
