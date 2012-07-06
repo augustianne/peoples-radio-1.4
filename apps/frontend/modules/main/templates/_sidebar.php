@@ -1,3 +1,4 @@
+<?php use_helper('MPD'); ?>
 <div id="sidebar">
 	<div class="side">
 		<article class="sts">
@@ -16,11 +17,13 @@
 					</h3>
 				</div>                     
 				<audio controls="controls" autoplay="autoplay" class="player">
-                  <source src="http://www.icecast-streaming.com.local:8181/<?php echo $room; ?>" type="audio/mpeg" />
+                  <source src="http://www.icecast-streaming.com.local:8000/<?php echo $channelId; ?>" type="audio/mpeg" />
                 </audio>
 			</div>
-			<h3>Playlist</h3> 
-			<div id="community">  
+			<h3>Playlist</h3>                                            
+			<?php mpd_get_current_track($channel->getPort()); ?>
+			
+			<div id="community" data-channel="<?php echo $channelId; ?>">
 				<?php include_component('main','playlist', array('channelId' => $channelId)); ?>
 			</div>
 		</article>

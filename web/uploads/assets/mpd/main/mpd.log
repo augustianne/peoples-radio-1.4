@@ -100,3 +100,11 @@ Jul 04 23:14 : update: added /099 Hunter Hayes - Wanted.mp3
 Jul 04 23:14 : update: added /100 Skrillex - Scary Monsters and Nice Sprites.mp3
 Jul 04 23:15 : state_file: failed to open /Volumes/GitDevDisk2/peoples-radio-1.4/web/uploads/assets/mpd/main/mpdstate: No such file or directory
 Jul 04 23:15 : config: option 'encoder' on line 233 was not recognized
+Jul 06 10:25 : config: option 'encoder' on line 233 was not recognized
+Jul 06 10:43 : config: option 'encoder' on line 233 was not recognized
+Jul 06 10:53 : player_thread: played "051 Rascal Flatts - Banjo.mp3"
+Jul 06 10:56 : player_thread: played "008 Nicki Minaj - Starships.mp3"
+Jul 06 11:00 : player_thread: played "097 Drake - Crew Love (feat. The Weeknd).mp3"
+Jul 06 11:04 : player_thread: played "051 Rascal Flatts - Banjo.mp3"
+Jul 06 11:07 : player_thread: played "008 Nicki Minaj - Starships.mp3"
+Jul 06 11:11 : player_thread: played "097 Drake - Crew Love (feat. The Weeknd).mp3"

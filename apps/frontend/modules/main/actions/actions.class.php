@@ -14,6 +14,8 @@ class mainActions extends sfActions
 	$request = $this->getRequest();
 	$this->channelId = $request->getParameter('channel', 'main');
 	$this->channel = ChannelPeer::retrieveBySlug($this->channelId);
+	
+	$this->forward404If(!$this->channel);
   }
  /**
   * Executes index action
@@ -21,7 +23,7 @@ class mainActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request)
-  {                           
+  {                    
 	$this->pager = new sfPropelPager('Track', 10);
 	$this->pager->setPage($request->getParameter('page', 1));
 	$this->pager->setCriteria(TrackPeer::getAvailableTracksCriteria($this->channel));
@@ -103,6 +105,7 @@ class mainActions extends sfActions
   protected function updatePhysicalPlaylist($tracks)
   {
 	$lines = array();
+	sfProjectConfiguration::getActive()->loadHelpers('MPD');
 	foreach($tracks as $track){
 		$lines[] = $track->getName();
 		$community = CommunityPeer::retrieveByPk($track->getId(), $this->channel->getId());
@@ -113,7 +116,10 @@ class mainActions extends sfActions
 		}                                    
 		$community->setPlayCount($community->getPlayCount()+1);
 		$community->save();
+
+		mpd_add_track($track->getFilename(), $this->channel->getPort());
 	}
+	
   }
 
  /**

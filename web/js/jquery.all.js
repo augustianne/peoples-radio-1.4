@@ -8,7 +8,7 @@
 				
 				$.ajax({
 					url: '/main/vote',
-					data: { id: obj.attr('data-id') },
+					data: { id: obj.attr('data-id'), channel: obj.attr('data-channel') },
 					dataType: 'json',
 					beforeSend: function(){
 						obj.html('<img src="'+l.src+'" width="20" />');
@@ -32,6 +32,7 @@
 			var u = function(obj){
 				$.ajax({
 					url: settings.url,
+					data: { channel: obj.attr('data-channel') },
 					type: 'POST',
 					success: function(data){  
 						$(settings.container).html(data);
@@ -40,7 +41,7 @@
 				});	
 			}
 
-			setInterval(u, 10000);
+			setInterval(u(obj), 10000);
 		});
 	}   
 	

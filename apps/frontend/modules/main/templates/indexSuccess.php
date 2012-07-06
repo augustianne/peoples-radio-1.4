@@ -3,13 +3,13 @@
 	<div class="liquid bdl">
 		<article class="que">
 			<h2>Vote three Songs for the next Queue! :))</h2>
-			<div id="vote_queue">
+			<div id="vote_queue" data-channel="<?php echo $channelId; ?>">
 				<?php include_partial('main/list', array('pager' => $pager, 'hasVotingRights' => $hasVotingRights, 'channel' => $channel)); ?>
 			</div>
 		</article>
 	</div> 
 </div>
-<?php include_partial('main/sidebar', array('channelId' => $channelId)); ?>
+<?php include_partial('main/sidebar', array('channelId' => $channelId, 'channel' => $channel)); ?>
 <div id="chat"> 
 	<div class="cht">
 		<ul>
