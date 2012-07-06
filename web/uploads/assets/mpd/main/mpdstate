@@ -1,8 +1,8 @@
 sw_volume: 100
 audio_device_state:1:My MPD Stream
 state: play
-current: 0
-time: 111
+current: 8
+time: 150
 random: 0
 repeat: 1
 single: 0
@@ -33,4 +33,9 @@ playlist_begin
 19:006 Flo Rida feat. Sia - Wild Ones.mp3
 20:025 Jennifer Lopez - Dance Again (feat. Pitbull).mp3
 21:014 Drake ft. Rihanna - Take Care.mp3
+22:055 Kenny Chesney & Tim McGraw - Feel Like A Rock Star.mp3
+23:046 Pitbull ft. Chris Brown - International Love.mp3
+24:002 Fun. ft. Janelle Monae - We Are Young.mp3
+25:006 Flo Rida feat. Sia - Wild Ones.mp3
+26:078 Rihanna - Where Have You Been.mp3
 playlist_end
