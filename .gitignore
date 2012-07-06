@@ -2,7 +2,6 @@
 /web/uploads/assets/cover
 /vendor/symfony
 /vendor/symfony-1.4.18
-/config/mpd
 /cache
 /log
 .DS_Store
