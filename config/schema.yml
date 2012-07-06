@@ -7,6 +7,7 @@ propel:
     track_id: { phpName: TrackId, type: INTEGER, size: '11', primaryKey: true, required: true, foreignTable: track, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
     channel_id: { phpName: ChannelId, type: INTEGER, size: '11', primaryKey: true, required: true, foreignTable: channel, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
     play_count: { phpName: PlayCount, type: SMALLINT, size: '6', required: false }
+    sequence: { phpName: Sequence, type: SMALLINT, size: '6', required: false, autoIncrement: true }
     _indexes: { community_track_id: [track_id] }
   channel:
     _attributes: { phpName: Channel }

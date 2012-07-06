@@ -26,28 +26,33 @@
 	}   
 
 	$.fn.page_update = function(options){   
-		var settings = $.extend({ url: 'main/update', container: '#this' }, options);
+		var settings = $.extend({ url: 'main/update', container: '#this', update_type: 'override'}, options);
 		return $(this).each(function(){
 			var obj = $(this);              
-			var u = function(obj){
+			var u = function(){
 				$.ajax({
 					url: settings.url,
 					data: { channel: obj.attr('data-channel') },
 					type: 'POST',
 					success: function(data){  
-						$(settings.container).html(data);
+						if(settings.update_type == 'override'){
+							$(settings.container).html(data);
+						}else if(settings.update_type == 'append'){
+							$(settings.container).append(data);
+						}
 						$('.vote').vote(); 
 					}
 				});	
 			}
 
-			setInterval(u(obj), 10000);
+			setInterval(u, 10000);
 		});
 	}   
 	
 	$(function(){
 		$('.vote').vote(); 
 		$('#vote_queue').page_update( { url: '/main/updateVoteQueue', container: '#vote_queue' } );
-		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community' } );
+		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community ul', update_type: 'append' } );
+		$('#cover_art').page_update( { url: '/main/updateCoverArt', container: '#cover_art' } );
 	});
 })(jQuery);

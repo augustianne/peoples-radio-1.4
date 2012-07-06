@@ -37,11 +37,15 @@ class TrackVotePeer extends BaseTrackVotePeer {
 		return $vote;
 	}
 
-	public static function resetVotes(Track $track=null, Channel $channel){
-		$vote = TrackVotePeer::retrieveByPk($track->getId(), $channel->getId());
-		if($vote){ 
-			$vote->setTempVotes(0); 
-			$vote->save();
+	public static function resetChannelVotes(Channel $channel){
+		$c = new Criteria();
+		$c->add(TrackVotePeer::CHANNEL_ID, $channel->getId());
+
+		$all = self::doSelect($c);
+		
+		foreach($all as $a){
+			$a->setTempVotes(0);
+			$a->save();
 		}
 	}
 

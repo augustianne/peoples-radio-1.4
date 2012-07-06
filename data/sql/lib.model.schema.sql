@@ -15,6 +15,7 @@ CREATE TABLE `community`
 	`track_id` INTEGER(11)  NOT NULL,
 	`channel_id` INTEGER(11)  NOT NULL,
 	`play_count` SMALLINT(6),
+	`sequence` SMALLINT(6)   AUTO_INCREMENT,
 	PRIMARY KEY (`track_id`,`channel_id`),
 	KEY `community_track_id`(`track_id`),
 	CONSTRAINT `community_FK_1`

@@ -1,41 +1,26 @@
 sw_volume: 100
 audio_device_state:1:My MPD Stream
 state: play
-current: 6
-time: 176
+current: 2
+time: 153
 random: 0
-repeat: 0
+repeat: 1
 single: 0
 consume: 0
 crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: nan
 playlist_begin
-0:051 Rascal Flatts - Banjo.mp3
-1:008 Nicki Minaj - Starships.mp3
-2:097 Drake - Crew Love (feat. The Weeknd).mp3
-3:051 Rascal Flatts - Banjo.mp3
-4:008 Nicki Minaj - Starships.mp3
-5:097 Drake - Crew Love (feat. The Weeknd).mp3
-6:051 Rascal Flatts - Banjo.mp3
-7:008 Nicki Minaj - Starships.mp3
-8:097 Drake - Crew Love (feat. The Weeknd).mp3
-9:051 Rascal Flatts - Banjo.mp3
-10:008 Nicki Minaj - Starships.mp3
-11:097 Drake - Crew Love (feat. The Weeknd).mp3
-12:051 Rascal Flatts - Banjo.mp3
-13:008 Nicki Minaj - Starships.mp3
-14:097 Drake - Crew Love (feat. The Weeknd).mp3
-15:051 Rascal Flatts - Banjo.mp3
-16:008 Nicki Minaj - Starships.mp3
-17:097 Drake - Crew Love (feat. The Weeknd).mp3
-18:051 Rascal Flatts - Banjo.mp3
-19:008 Nicki Minaj - Starships.mp3
-20:097 Drake - Crew Love (feat. The Weeknd).mp3
-21:051 Rascal Flatts - Banjo.mp3
-22:008 Nicki Minaj - Starships.mp3
-23:097 Drake - Crew Love (feat. The Weeknd).mp3
-24:051 Rascal Flatts - Banjo.mp3
-25:008 Nicki Minaj - Starships.mp3
-26:097 Drake - Crew Love (feat. The Weeknd).mp3
+0:037 LMFAO - Sexy and I Know It.mp3
+1:090 Mac Miller - Loud.mp3
+2:009 One Direction - What Makes You Beautiful.mp3
+3:002 Fun. ft. Janelle Monae - We Are Young.mp3
+4:005 Carly Rae Jepsen - Call Me Maybe.mp3
+5:004 The Wanted - Glad You Came.mp3
+6:026 Rihanna ft. Calvin Harris - We Found Love.mp3
+7:005 Carly Rae Jepsen - Call Me Maybe.mp3
+8:047 Maroon 5 ft. Christina Aguilera - Moves Like Jagger.mp3
+9:007 Justin Bieber - Boyfriend.mp3
+10:044 Jessie J - Domino.mp3
+11:071 Brantley Gilbert - You Don't Know Her Like I Do.mp3
 playlist_end
