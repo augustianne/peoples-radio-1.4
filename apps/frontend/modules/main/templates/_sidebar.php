@@ -15,7 +15,7 @@
 						<em>Album Name</em>
 					</h3>
 				</div>                     
-				<audio controls="controls" autoplay="autoplay">
+				<audio controls="controls" autoplay="autoplay" class="player">
                   <source src="http://www.icecast-streaming.com.local:8181/<?php echo $room; ?>" type="audio/mpeg" />
                 </audio>
 			</div>
