@@ -248,7 +248,10 @@ class mainActions extends sfActions
   		$baseIcecastPort = 8000;
 
   		$mpdPort = ($obj->getID() - 1) + $baseMpdPort;
-  		$icecastPort = (($obj->getID() - 1) + 2) + $baseIcecastPort;
+  		$prevNumber = $obj->getID() - 1;
+  		$number = $obj->getID() + $prevNumber;
+  		$x = (($number % 2) == 0) ? $number : $number - 1;
+  		$icecastPort = $x + $baseIcecastPort;
   		
   		$obj->setPort($mpdPort);
   		$obj->setIcecastPort($icecastPort);
@@ -273,7 +276,7 @@ class mainActions extends sfActions
 		mkdir($channelConfigDir);
 	}
 	
-	sfContext::getInstance()->getConfiguration()->loadHelpers('Partial, MPD');
+	sfContext::getInstance()->getConfiguration()->loadHelpers(array('Partial', 'MPD'));
 	$template = $this->getPartial('global/mpdConf', array('channel' => $channel));
 
 	// create mpd.conf
@@ -284,21 +287,12 @@ class mainActions extends sfActions
 	// create mpd.log
 	$mpdLog = $channelConfigDir . DIRECTORY_SEPARATOR . "mpd.log";
 	touch($mpdLog);
-	// $fh = fopen($mpdLog, 'w') or die("can't open file");
-	// fwrite($fh, "");
-	// fclose($fh);
 	// create mpd.pid
 	$mpdPid = $channelConfigDir . DIRECTORY_SEPARATOR . "mpd.pid";
 	touch($mpdPid);
-	// $fh = fopen($mpdPid, 'w') or die("can't open file");
-	// fwrite($fh, "");
-	// fclose($fh);
 	// create mpdstate
 	$mpdState = $channelConfigDir . DIRECTORY_SEPARATOR . "mpdstate";
 	touch($mpdState);
-	// $fh = fopen($mpdState, 'w') or die("can't open file");
-	// fwrite($fh, "");
-	// fclose($fh);
 
 	// run mpd
 	mpd_run($mpdConf);
