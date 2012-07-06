@@ -1,10 +1,6 @@
 <?php use_helper('MPD'); ?>
-<div id="sidebar">
+<div id="sidebar" class="grid_4">
 	<div class="side">
-		<article class="sts">
-			<img src="/images/headphone.png" border="0" alt=" " class="fl mr5">
-			<p><span>20356</span> are Currently Listening!</p>
-		</article>
 		<article class="que clear">
 			<div class="radio">
 				<!-- Put Player Here -->

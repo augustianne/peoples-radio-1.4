@@ -7,6 +7,7 @@
 	<link rel="shortcut icon" href="/images/favicon.ico" />
     <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:700,700italic' rel='stylesheet' type='text/css'>	
+    <link href='/css/grid.css' rel='stylesheet' type='text/css'>	
 	<?php include_stylesheets() ?>
 	<?php include_javascripts() ?>
       <meta charset="utf-8">  
@@ -17,11 +18,18 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
       <![endif]-->  
     </head>  
-    <body>  
-    	<nav id="lg"><img src="/images/logo.png" border="0" align="left" alt="People's Radio"></nav>
-		<?php echo $sf_content ?>
+    <body>
+    	 <header class="container_12">
+    		<img id="lg" src="/images/logo.png" border="0" align="left" alt="People's Radio">
+    		<div class="signup">
+    			<button class="button create">Create a Room!</button>
+    		</div>
+    	</header> 
+    	<div id="content" class="container_12">
+    		<?php echo $sf_content ?>
+    	
 		<div id="footer" class="clear">
      		<p class="statement"><em>Lets talk about how we can help People's Radio.</em><br><a href="#">People's Forum</a>. Made in Philippines. 2012.</p>
-     	</div>
+     	</div></div>
   </body>
 </html>

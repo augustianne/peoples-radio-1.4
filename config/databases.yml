@@ -24,9 +24,9 @@ all:
     class:        sfPropelDatabase
     param:
       classname:  PropelPDO
-      dsn:        mysql:dbname=peoples_radio;host=localhost
+      dsn:        mysql:dbname=peoples_radio;host=192.168.1.120
       username:   root
-      password:   root
+      password:   
       encoding:   utf8
       persistent: true
       pooling:    true

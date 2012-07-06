@@ -5,7 +5,7 @@ Last Updated: 2012-06-22
 */
 
 html { overflow-y: scroll; }
-body { background: url("/images/bck.jpg") repeat 0 0 #000; max-width: 1800px; min-width: 1072px;
+body { background: url("/images/bck.jpg") repeat-x 0 0 #111; max-width: 1800px; min-width: 1072px;
 	   font:normal 14px/22px 'Pontano Sans', sans-serif; }
 
 h1, h2, h3, h4 { font-family: 'Droid Serif', serif; letter-spacing: -1px; }
@@ -27,21 +27,25 @@ li { list-style: none; }
 .mr10 { margin-right: 10px; }
 .mt10 { margin-top: 10px; }
 
+/* header */ 
+
+header { position: relative; } 
+#lg { position: absolute; left:15px; top:-99px; z-index: 1; }
+.signup { position: absolute; right: 0; top: -66px; text-align: right; }
+
 /* border */
-.bdl, bdr { overflow: hidden; } 
+.bd, .bdl, bdr { overflow: hidden; } 
+.bd  { border-radius: 10px; }
 .bdl { border-radius:0 10px 10px 0; }
 .bdr { border-radius:10px 0 0 10px;}
 
-#lg { position: absolute; left:37px; top:0; z-index: 1; }
-#container { float:left; width: 100%; margin-right: -450px;}
 #chat { display: none; }
-nav + #container > .liquid { padding-top: 13em; } 
 
 div.liquid,
-div.sml    { background-color: rgba(0, 0, 0, 0.3); margin-right: 450px; border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.05); 
-			 min-width: 620px; padding-top: 20px; margin-top: 20px; }
-div.side   { float: left; padding: 0 0 0 20px; position: relative; width: 420px; margin-top: 20px; }
-div.cht   { float: left; padding: 0; margin-left:25px; position: relative; width: 420px; margin-top: 20px; background-color: #fff; border-radius:4px; }
+div.sml    { background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.05); 
+			 min-width: 620px; padding-top: 20px; margin-top: 80px; }
+div.cht    { float: left; padding: 0; margin-left:25px; position: relative; width: 420px; margin-top: 20px; background-color: #fff; border-radius:4px; }
+div.side   { margin-top: 10px; }
 div.sml    { display: none; }
 
 #container article { padding: 0 5.5%; margin-bottom: 2em; }
@@ -52,6 +56,8 @@ div.sml    { display: none; }
 #container.min .sml { display: block; min-height: 800px; }
 #container.min .liquid { display: none; }
 
+#content { background-color: rgba(0,0,0,0.2); border-radius: 15px; margin-top: 100px; padding: 10px; position: relative; }
+
 /*Queue List*/
 .radio { background:transparent url('/images/albumbck.jpg') no-repeat left top; overflow: hidden; margin-bottom: 20px; border-radius:4px; box-shadow: 0 1px 2px; rgba(0, 0, 0, 0.1) }
 .radio span { border-radius: 50px; border: 1px solid #bbb; color: #eee; padding: 3px 10px 2px;  text-transform: uppercase; font-size: 10px; margin-bottom: 10px; display: inline-block; opacity:0.5;}
@@ -61,9 +67,9 @@ div.sml    { display: none; }
 .player { float:left; width: 220px; }
 
 .que li { border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 5px 0; overflow: hidden; line-height: 22px; }
-.que li h4  { float: left; margin-right: 10; width: 270px; }
-#vote_queue h4 { width: auto; }
-.que li h4 em { font-size: 15px; color: #999; margin-left: 10px; }
+.que li h4  { float: left; margin-right: 10; width: 180px; word-wrap: break-word; }
+#vote_queue h4 { width: 365px; word-wrap:break-word; }
+.que li h4 em { font-size: 15px; color: #999; margin-left: 5px; }
 .que li span { width: 85px; font-size: 15px; color: #999; margin:0 10px; }
 .que li:first-child { border-top: none; }
 .que li:last-child { border-bottom: none; }
@@ -94,6 +100,59 @@ input, textarea { font:normal 14px/22px 'Pontano Sans', sans-serif; }
 					color-stop(0.28, rgb(128,0,87)),
 					color-stop(0.82, rgb(173,136,136))
 				); }
+				
+/* buttin */
+
+button, .button {
+    max-width: 180px;
+    min-width: 101px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font:bold 14px/14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+    display: inline-block;
+    color: #fff;
+    height: 36px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.42);
+	border-radius: 8px;
+}
+
+button:active, .button:active { 
+	cursor: pointer; 
+    background: none repeat scroll 0 0 #568EAD;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.29) inset;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.42);
+}
+
+button:hover, .button:hover { cursor: pointer; }
+
+.create {
+
+	background-image: linear-gradient(bottom, rgb(98,168,186) 42%, rgb(116,189,207) 71%);
+	background-image: -o-linear-gradient(bottom, rgb(98,168,186) 42%, rgb(116,189,207) 71%);
+	background-image: -moz-linear-gradient(bottom, rgb(98,168,186) 42%, rgb(116,189,207) 71%);
+	background-image: -webkit-linear-gradient(bottom, rgb(98,168,186) 42%, rgb(116,189,207) 71%);
+	background-image: -ms-linear-gradient(bottom, rgb(98,168,186) 42%, rgb(116,189,207) 71%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.42, rgb(98,168,186)),
+		color-stop(0.71, rgb(116,189,207))
+	);
+
+	border: none;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 0 0 rgba(255, 255, 255, 0.47) inset;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.42);
+}
+
+
+*, *:active, *:focus {
+    outline: 0 none;
+}				
 
 /*blog*/
 .blg li { padding-bottom: 10px; margin-bottom: 10px; }
@@ -106,6 +165,3 @@ input, textarea { font:normal 14px/22px 'Pontano Sans', sans-serif; }
 
 /*footer*/
 #footer { padding: 20px 3.5%; }
-
-
-
