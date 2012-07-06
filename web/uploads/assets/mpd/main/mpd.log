@@ -140,3 +140,10 @@ Jul 06 13:43 : player_thread: played "006 Flo Rida feat. Sia - Wild Ones.mp3"
 Jul 06 13:48 : player_thread: played "037 LMFAO - Sexy and I Know It.mp3"
 Jul 06 13:51 : player_thread: played "090 Mac Miller - Loud.mp3"
 Jul 06 13:54 : player_thread: played "009 One Direction - What Makes You Beautiful.mp3"
+Jul 06 16:19 : config: option 'encoder' on line 233 was not recognized
+Jul 06 16:19 : output: Failed to open "My MPD Stream" [shout]: problem opening connection to shout server www.icecast-streaming.com.local:8000: Couldn't connect
+Jul 06 16:19 : player_thread: problems opening audio device while playing "007 Justin Bieber - Boyfriend.mp3"
+Jul 06 16:20 : output: Failed to open "My MPD Stream" [shout]: problem opening connection to shout server www.icecast-streaming.com.local:8000: Couldn't connect
+Jul 06 16:20 : output: Failed to open "My MPD Stream" [shout]: problem opening connection to shout server www.icecast-streaming.com.local:8000: Couldn't connect
+Jul 06 16:23 : config: option 'encoder' on line 233 was not recognized
+Jul 06 16:24 : player_thread: played "007 Justin Bieber - Boyfriend.mp3"
