@@ -1,4 +1,4 @@
-<div id="container" class="clear">
+<div id="container" class="grid_8">
 	<div class="sml"><h2>New song have arrived, Vote Now!</h2></div>
 	<div class="liquid bdl">
 		<article class="que">
