@@ -9,7 +9,11 @@ homepage:
 channel:
   url:   /:channel
   param: { module: main, action: index }
+  class: ChannelRoute
 
+create-channel:
+  url:   /create-channel
+  param: { module: main, action: createRoom}
 # generic rules
 # please, remove them by adding more specific rules
 default_index:

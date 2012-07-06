@@ -25,4 +25,11 @@ class ChannelPeer extends BaseChannelPeer {
 		return self::doSelectOne($c);
 	}
 
+	public static function retrieveByName($name)
+	{
+		$c = new Criteria;
+		$c->add(ChannelPeer::NAME, $name);
+		return self::doSelectOne($c);
+	}
+
 } // ChannelPeer

@@ -12,9 +12,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [reset.css, styles.css?v=1.0]
+  stylesheets:    [reset.css, styles.css?v=1.0, reveal.css]
 
-  javascripts:    [jquery-1.6.4.min.js, jquery.all.js, modernizr-1.0.min.js]
+  javascripts:    [jquery-1.6.4.min.js, jquery.all.js, modernizr-1.0.min.js, jquery.reveal.js]
 
   has_layout:     true
   layout:         layout

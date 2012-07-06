@@ -14,8 +14,8 @@ class mainActions extends sfActions
 	$request = $this->getRequest();
 	$this->channelId = $request->getParameter('channel', 'main');
 	$this->channel = ChannelPeer::retrieveBySlug($this->channelId);
-	
-	$this->forward404If(!$this->channel);
+
+	$this->forward404If(!$this->channel AND ($request->isMethod(sfRequest::POST) == false));
   }
  /**
   * Executes index action
@@ -183,6 +183,44 @@ class mainActions extends sfActions
 	if(isset($_COOKIE['ppr_ucid'])) setcookie('ppr_ucid', '', 1, '/');
 	
 	$this->hasVotingRights = true;
+  }
+
+  /**
+   * Function: executeCreateRoom
+   * 
+   * description
+   * 
+   * Parameters:
+   * 
+   *   sfWebRequest $request - sfWebRequest
+   * 
+   * Returns:
+   * 
+   *   return description
+   */
+  public function executeCreateRoom(sfWebRequest $request)
+  {
+  	$channel = $request->getParameter('channel');
+  	$this->forward404If(is_null($channel) OR !$request->isXmlHttpRequest());
+  	$obj = ChannelPeer::retrieveByName($channel);
+  	$this->getResponse()->setContentType('application/json');
+  	if(!$obj)
+  	{
+  		$slug = Slugify::getInstance()->format($channel);
+  		// run a script to create config files
+
+  		// save to db
+  		$obj = new Channel;
+  		$obj->setName($channel);
+  		$obj->setPort();
+  		$obj->setSlug($slug);
+  		$obj->save();
+
+  		return $this->renderText(json_encode(array('success' => true, 'message' => 'Your room has been successfully created!')));
+  	}
+
+  	return $this->renderText(json_encode(array('success' => false, 'message' => 'A room with the same name already exists!')));
+  	
   }
 
 }

@@ -22,12 +22,14 @@
     	 <header class="container_12">
     		<img id="lg" src="/images/logo.png" border="0" align="left" alt="People's Radio">
     		<div class="signup">
-    			<button class="button create">Create a Room!</button>
+    			<button id="create-room-button" class="button create">Create a Room!</button>
     		</div>
     	</header> 
     	<div id="content" class="container_12">
     		<?php echo $sf_content ?>
-    	
+    	<!-- </div> -->
+      <?php include_partial('global/createRoom')?>
+
 		<div id="footer" class="clear">
      		<p class="statement"><em>Lets talk about how we can help People's Radio.</em><br><a href="#">People's Forum</a>. Made in Philippines. 2012.</p>
      	</div></div>
