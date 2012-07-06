@@ -7,6 +7,7 @@ Last Updated: 2012-06-22
 html { overflow-y: scroll; }
 body { background: url("/images/bck.jpg") repeat-x 0 0 #111; max-width: 1800px; min-width: 1072px;
 	   font:normal 14px/22px 'Pontano Sans', sans-serif; }
+.home { background:transparent url("/images/bck1.png") no-repeat center top; }	   
 
 h1, h2, h3, h4 { font-family: 'Droid Serif', serif; letter-spacing: -1px; }
 
@@ -30,6 +31,7 @@ li { list-style: none; }
 /* header */ 
 
 header { position: relative; } 
+header h1 { position: absolute; top:-60px; font-size: 30px; color: #fff; text-shadow:0 -1px 0 rgba(0, 0, 0, 0.42); } 
 #lg { position: absolute; left:15px; top:-99px; z-index: 1; }
 .signup { position: absolute; right: 0; top: -66px; text-align: right; }
 
@@ -40,7 +42,7 @@ header { position: relative; }
 .bdr { border-radius:10px 0 0 10px;}
 
 #chat { display: none; }
-
+#topper { height: 300px; }
 ul.sml     { margin-top: 80px;padding: 10px 20px; margin-bottom: 10px; }
 ul.sml li  { float: left; margin-right: 20px; font-size: 16px; color: #999; padding-left: 25px; } 
 .sml .last { float: right; margin: 0; }  
@@ -48,11 +50,15 @@ ul.sml li  { float: left; margin-right: 20px; font-size: 16px; color: #999; padd
 .sml .room { background: transparent url('../images/room.png') no-repeat left 3px; }    
 
 div.liquid { background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.05); 
-			 min-width: 620px; padding-top: 20px; }
+			 min-width: 620px; padding-top: 20px; margin-top: 80px; }
+div.solid  { min-width: 620px; margin-top: 10px; }
 div.cht    { float: left; padding: 0; margin-left:25px; position: relative; width: 420px; margin-top: 20px; background-color: #fff; border-radius:4px; }
 div.side   { margin-top: 10px; }
 
-#container article { padding: 0 20px; margin-bottom: 2em; }
+.sml + .liquid { margin-top: 0; } 
+
+#container article { margin-bottom: 2em; }
+#container article.que { padding: 0 20px; }
 #container article + article { opacity: 0.3; background:transparent url('/images/lock.png') no-repeat center center; }
 #sidebar article { margin-bottom: 2em; }
 #container.min + #sidebar + #chat { display: block; }
@@ -60,14 +66,22 @@ div.side   { margin-top: 10px; }
 #container.min .sml { display: block; min-height: 800px; }
 #container.min .liquid { display: none; }
 
-#content { background-color: rgba(0,0,0,0.2); border-radius: 15px; margin-top: 100px; padding: 10px; position: relative; border: 1px solid rgba(0, 0, 0, 0.1); }
+#content { background-color: rgba(0,0,0,0.2); border-radius: 15px; margin-top: 100px; padding: 10px; position: relative; border: 1px solid rgba(0, 0, 0, 0.1); margin-bottom: 10px; }
 
+/* homelist */
+article.chn a { width: 305px; height: 212px; border-radius: 4px; float: left; margin-right: 10px; margin-bottom: 10px;position: relative; border-radius: 4px; overflow: hidden; opacity:0.7 }
+article.chn span { background-color: #000; bottom: 10px; left: 0; padding: 7px 10px 8px; position: absolute; font-size: 18px; color: #fff; }
+article.chn a:nth-child(2n+2) { margin-right: 0; }
+article.chn a:hover { opacity:1;}
+h2.chn { font-size: 20px; color: #41B7D8;}
+h2.chn a { font-size: 20px; color: #fff; }
 /*Queue List*/
 .radio { background:transparent url('/images/albumbck.jpg') no-repeat left top; overflow: hidden; margin-bottom: 20px; border-radius:4px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46); }
 .radio span { border-radius: 50px; border: 1px solid #bbb; color: #eee; padding: 3px 10px 2px;  text-transform: uppercase; font-size: 10px; margin-bottom: 10px; display: inline-block; opacity:0.5;}
 .radio .atr { padding: 10px 5px; } 
 .radio h3 { color: #fff; letter-spacing: 0; margin: 0; }
 .radio em { font: italic 12px 'Pontano Sans',sans-serif; display: block; color: #888; }
+.radio img { width: 177px;}
 .player { float:left; width: 220px; }
 
 .que li { border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 5px 0; overflow: hidden; line-height: 22px; }

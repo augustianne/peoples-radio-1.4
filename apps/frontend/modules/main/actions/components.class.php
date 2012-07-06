@@ -22,4 +22,12 @@ class mainComponents extends sfComponents
 	$this->pager->init();       
   }
 
+  public function executeSelectChannels(sfWebRequest $request)
+  {
+	$this->pager = new sfPropelPager('Channel', 10);
+	$this->pager->setPage($request->getParameter('page', 1));
+	$this->pager->setPeerMethod('doSelect');
+	$this->pager->init();
+  }
+
 }

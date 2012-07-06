@@ -53,28 +53,36 @@
 		alert('test');
 		$('.vote').vote(); 
 		$('#vote_queue').page_update( { url: '/main/updateVoteQueue', container: '#vote_queue' } );
-		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community ul', update_type: 'append' } );
+		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community ul' } );
 		$('#cover_art').page_update( { url: '/main/updateCoverArt', container: '#cover_art' } );
+		$('#listeners').page_update( { url: '/main/updateListeners', container: '#listeners' } );
 
 		$("#create-room-button").click(function(){
 			$("#create-room-modal").reveal();
 		});
 
-		// $("#create-room-form").submit(function(){
-		// 	var postUrl = $(this).attr('action');
-		// 	alert(postUrl);
-		// 	$.ajax({
-		// 		url: postUrl,
-		// 		data: $(this).serialize(),
-		// 		type: 'POST',
-		// 		dataType: 'json',
-		// 		beforeSend: function(){},
-		// 		success: function(data){
-		// 			alert(data.success);
-		// 		}
-		// 	});
-		// 	return false;
-		// });
+
+		$("#change-room-button").click(function(){
+			$("#change-room-modal").reveal();
+			return false;
+		});
+
+		$("#create-room-form").submit(function(){
+			var postUrl = $(this).attr('action');
+			alert(postUrl);
+			$.ajax({
+				url: postUrl,
+				data: $(this).serialize(),
+				type: 'POST',
+				dataType: 'json',
+				beforeSend: function(){},
+				success: function(data){
+					alert(data.success);
+				}
+			});
+			return false;
+		});
+		
 	});
 
 

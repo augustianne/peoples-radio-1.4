@@ -88,15 +88,20 @@ class mainActions extends sfActions
   {
 	// $this->forward404If(!$request->isXmlHttpRequest());
 	
-	$this->pager = new sfPropelPager('Track', 3);
+	$this->updatePhysicalPlaylist(TrackPeer::doSelect(TrackPeer::getTopNTracksInQueueCriteria($this->channel)));
+
+	CommunityPeer::prunePlaylist($this->channel);
+
+	$this->pager = new sfPropelPager('Track', 10);
 	$this->pager->setPage($request->getParameter('page', 1));
-	$this->pager->setCriteria(TrackPeer::getTopNTracksInQueueCriteria($this->channel));
+	$this->pager->setCriteria(TrackPeer::getTracksInPlaylistCriteria($this->channel));
 	$this->pager->setPeerMethod('doSelect');
 	$this->pager->init();      
 	
-	$this->updatePhysicalPlaylist($this->pager->getResults());
 	$ret = $this->renderPartial('main/playlist', array('pager' => $this->pager));
+
 	TrackVotePeer::resetChannelVotes($this->channel);
+
 	return $ret;
   }
 
@@ -110,6 +115,18 @@ class mainActions extends sfActions
 	$this->forward404If(!$request->isXmlHttpRequest());
 
 	return $this->renderPartial('main/coverArt', array('channel' => $this->channel));
+  }
+
+ /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeUpdateListeners(sfWebRequest $request)
+  {
+	$this->forward404If(!$request->isXmlHttpRequest());
+
+	return $this->renderPartial('main/listeners', array('channel' => $this->channel));
   }
 
  /**
