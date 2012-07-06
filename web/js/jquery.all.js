@@ -77,7 +77,7 @@
 				dataType: 'json',
 				beforeSend: function(){},
 				success: function(data){
-					alert(data.success);
+					alert(data.message);
 				}
 			});
 			return false;
