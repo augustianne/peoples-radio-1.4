@@ -17,14 +17,15 @@
 	.reveal-modal {
 		visibility: hidden;
 		top: 100px; 
-		left: 50%;
-		margin-left: -300px;
-		width: 520px;
+		right: 50%;
+		margin-top: -120px;
+		margin-right: -480px;
+		width: 333px;
 		/*background: #eee url(modal-gloss.png) no-repeat -200px -80px;*/
 		background: #eee;
 		position: absolute;
 		z-index: 101;
-		padding: 30px 40px 34px;
+		padding: 20px;
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
@@ -57,13 +58,13 @@
 	
 	.reveal-modal label {
 		float: left;
-		margin-right: 10px;
+		margin:0 10px 10px 0;
 	}
 	
 	.reveal-modal .text {
 		float: left;
 		margin:0 10px 10px 0;
-		width: 367px;
+		width: 300px;
 	}
 	
 	

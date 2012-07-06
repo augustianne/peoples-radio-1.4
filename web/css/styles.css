@@ -106,20 +106,6 @@ input, textarea { font:normal 14px/22px 'Pontano Sans', sans-serif; }
 .frm textarea 	{ border: 1px solid #d1eff8; background-color:#edfbff; border-radius: 4px; resize:none; padding: 4px 5px; width: 95%; }
 .frm input	   	{ 	color: #fff; border: 0; border-radius: 4px; cursor: pointer; font-size: 12px; padding: 5px 15px; font-size: 14px; }
 .frm input[type="text"] { border: 1px solid #ddd; margin-right: 0; }
-.frm input[type="submit"] { 
-					background-image: linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-				  	background-image: -o-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-					background-image: -moz-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-					background-image: -webkit-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-					background-image: -ms-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-
-					background-image: -webkit-gradient(
-					linear,
-					left bottom,
-					left top,
-					color-stop(0.28, rgb(128,0,87)),
-					color-stop(0.82, rgb(173,136,136))
-				);   }					
 				
 /* button */
 
