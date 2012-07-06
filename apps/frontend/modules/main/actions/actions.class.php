@@ -15,6 +15,7 @@ class mainActions extends sfActions
 	$this->channelId = $request->getParameter('channel', 'main');
 	$this->channel = ChannelPeer::retrieveBySlug($this->channelId);
 
+
 	$this->forward404If(!$this->channel AND ($request->isMethod(sfRequest::POST) == false));
   }
  /**
@@ -215,20 +216,28 @@ class mainActions extends sfActions
   public function executeCreateRoom(sfWebRequest $request)
   {
   	$channel = $request->getParameter('channel');
-  	$this->forward404If(is_null($channel) OR !$request->isXmlHttpRequest());
+  	// $this->forward404If(is_null($channel) OR !$request->isXmlHttpRequest());
   	$obj = ChannelPeer::retrieveByName($channel);
   	$this->getResponse()->setContentType('application/json');
   	if(!$obj)
   	{
   		$slug = Slugify::getInstance()->format($channel);
-  		// run a script to create config files
-
-  		// save to db
   		$obj = new Channel;
   		$obj->setName($channel);
-  		$obj->setPort();
   		$obj->setSlug($slug);
   		$obj->save();
+
+  		$baseMpdPort = 6600;
+  		$baseIcecastPort = 8000;
+
+  		$mpdPort = ($obj->getID() - 1) + $baseMpdPort;
+  		$icecastPort = (($obj->getID() - 1) + 2) + $baseIcecastPort;
+  		
+  		$obj->setPort($mpdPort);
+  		$obj->setIcecastPort($icecastPort);
+  		$obj->save();
+
+  		$this->_createMpdFiles($obj);
 
   		return $this->renderText(json_encode(array('success' => true, 'message' => 'Your room has been successfully created!')));
   	}
@@ -236,5 +245,47 @@ class mainActions extends sfActions
   	return $this->renderText(json_encode(array('success' => false, 'message' => 'A room with the same name already exists!')));
   	
   }
+
+
+  protected function _createMpdFiles(Channel $channel)
+  {
+	$baseDir = sfConfig::get('sf_config_dir') . DIRECTORY_SEPARATOR . 'mpd';
+	$channelConfigDir = $baseDir . DIRECTORY_SEPARATOR . $channel->getSlug();
+	if(!file_exists($channelConfigDir))
+	{
+		mkdir($channelConfigDir);
+	}
+	
+	sfContext::getInstance()->getConfiguration()->loadHelpers('Partial, MPD');
+	$template = $this->getPartial('global/mpdConf', array('channel' => $channel));
+
+	// create mpd.conf
+	$mpdConf = $channelConfigDir . DIRECTORY_SEPARATOR . "mpd.conf";
+	$fh = fopen($mpdConf, 'w') or die("can't open file");
+	fwrite($fh, $template);
+	fclose($fh);
+	// create mpd.log
+	$mpdLog = $channelConfigDir . DIRECTORY_SEPARATOR . "mpd.log";
+	touch($mpdLog);
+	// $fh = fopen($mpdLog, 'w') or die("can't open file");
+	// fwrite($fh, "");
+	// fclose($fh);
+	// create mpd.pid
+	$mpdPid = $channelConfigDir . DIRECTORY_SEPARATOR . "mpd.pid";
+	touch($mpdPid);
+	// $fh = fopen($mpdPid, 'w') or die("can't open file");
+	// fwrite($fh, "");
+	// fclose($fh);
+	// create mpdstate
+	$mpdState = $channelConfigDir . DIRECTORY_SEPARATOR . "mpdstate";
+	touch($mpdState);
+	// $fh = fopen($mpdState, 'w') or die("can't open file");
+	// fwrite($fh, "");
+	// fclose($fh);
+
+	// run mpd
+	mpd_run($mpdConf);
+  }
+
 
 }

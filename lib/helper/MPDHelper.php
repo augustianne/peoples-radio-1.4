@@ -26,3 +26,8 @@
 
 		return $files[0];
 	}
+
+	function mpd_run($confiPath = '')
+	{
+		shell_exec("mpd $confiPath");
+	}

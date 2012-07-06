@@ -50,6 +50,7 @@
 	}   
 	
 	$(function(){
+		alert('test');
 		$('.vote').vote(); 
 		$('#vote_queue').page_update( { url: '/main/updateVoteQueue', container: '#vote_queue' } );
 		$('#community').page_update( { url: '/main/updatePlaylist', container: '#community ul', update_type: 'append' } );
@@ -59,21 +60,21 @@
 			$("#create-room-modal").reveal();
 		});
 
-		$("#create-room-form").submit(function(){
-			var postUrl = $(this).attr('action');
-			alert(postUrl);
-			$.ajax({
-				url: postUrl,
-				data: $(this).serialize(),
-				type: 'POST',
-				dataType: 'json',
-				beforeSend: function(){},
-				success: function(data){
-					alert(data.success);
-				}
-			});
-			return false;
-		});
+		// $("#create-room-form").submit(function(){
+		// 	var postUrl = $(this).attr('action');
+		// 	alert(postUrl);
+		// 	$.ajax({
+		// 		url: postUrl,
+		// 		data: $(this).serialize(),
+		// 		type: 'POST',
+		// 		dataType: 'json',
+		// 		beforeSend: function(){},
+		// 		success: function(data){
+		// 			alert(data.success);
+		// 		}
+		// 	});
+		// 	return false;
+		// });
 	});
 
 
