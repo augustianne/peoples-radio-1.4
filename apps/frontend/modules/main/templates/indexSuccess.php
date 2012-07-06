@@ -4,12 +4,12 @@
 		<article class="que">
 			<h2>Vote three Songs for the next Queue! :))</h2>
 			<div id="vote_queue">
-				<?php include_partial('main/list', array('pager' => $pager)); ?>
+				<?php include_partial('main/list', array('pager' => $pager, 'hasVotingRights' => $hasVotingRights, 'channel' => $channel)); ?>
 			</div>
 		</article>
 	</div> 
 </div>
-<?php include_partial('main/sidebar', array('room' => $sf_params->get('room'))); ?>
+<?php include_partial('main/sidebar', array('channelId' => $channelId)); ?>
 <div id="chat"> 
 	<div class="cht">
 		<ul>

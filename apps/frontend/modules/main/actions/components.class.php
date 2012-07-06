@@ -13,9 +13,11 @@ class mainComponents extends sfComponents
 
   public function executePlaylist(sfWebRequest $request)
   {
+	$this->channel = ChannelPeer::retrieveBySlug($this->channelId);
+
 	$this->pager = new sfPropelPager('Track', 100);
 	$this->pager->setPage($request->getParameter('page', 1));
-	$this->pager->setCriteria(TrackPeer::getTracksInPlaylistCriteria());
+	$this->pager->setCriteria(TrackPeer::getTracksInPlaylistCriteria($this->channel));
 	$this->pager->setPeerMethod('doSelect');
 	$this->pager->init();       
   }

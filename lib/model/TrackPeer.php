@@ -18,28 +18,44 @@
  */
 class TrackPeer extends BaseTrackPeer {
 
-	public static function getAvailableTracksCriteria(){
+	public static function getAvailableTracksCriteria(Channel $channel=null){
 		$criteria = new Criteria();
-		$criteria->addJoin(TrackPeer::ID, CommunityPeer::TRACK_ID, Criteria::LEFT_JOIN);
+		$criteria->addJoin(TrackPeer::ID, ChannelTrackPeer::TRACK_ID, Criteria::JOIN);
+		$criteria->add(ChannelTrackPeer::CHANNEL_ID, $channel->getId());
+		
+		$communityJoin = array(
+			array(TrackPeer::ID, CommunityPeer::TRACK_ID),
+			array(CommunityPeer::CHANNEL_ID, $channel->getId()),
+		);
+
+		$criteria->addMultipleJoin($communityJoin, Criteria::LEFT_JOIN);
 		$criteria->add(CommunityPeer::TRACK_ID, NULL, Criteria::ISNULL);
 		$criteria->addDescendingOrderByColumn('RAND()');
 		
 		return $criteria;
 	}
 
-	public static function getTracksInPlaylistCriteria(){
+	public static function getTracksInPlaylistCriteria(Channel $channel=null){
 		$criteria = new Criteria();
-		$criteria->addJoin(TrackPeer::ID, TrackVotePeer::TRACK_ID);
-		$criteria->addJoin(TrackVotePeer::TRACK_ID, CommunityPeer::TRACK_ID, Criteria::LEFT_JOIN);
+		$criteria->addJoin(TrackPeer::ID, TrackVotePeer::TRACK_ID, Criteria::JOIN);
+
+		$communityJoin = array(
+			array(TrackVotePeer::TRACK_ID, CommunityPeer::TRACK_ID),
+			array(CommunityPeer::CHANNEL_ID, $channel->getId()),
+		);
+
+		$criteria->addMultipleJoin($communityJoin, Criteria::LEFT_JOIN);
 		$criteria->add(CommunityPeer::TRACK_ID, NULL, Criteria::ISNOTNULL);
 		$criteria->addDescendingOrderByColumn(TrackVotePeer::TEMP_VOTES);
-		
+
 		return $criteria;
 	}
 
-	public static function getTopNTracksInQueueCriteria($n=3){
+	public static function getTopNTracksInQueueCriteria(Channel $channel=null, $n=3){
 		$criteria = new Criteria();
 		$criteria->addJoin(TrackPeer::ID, TrackVotePeer::TRACK_ID);
+		$criteria->add(TrackVotePeer::CHANNEL_ID, $channel->getId());
+
 		$criteria->setLimit($n);
 		$criteria->addDescendingOrderByColumn(TrackVotePeer::TEMP_VOTES);
 		

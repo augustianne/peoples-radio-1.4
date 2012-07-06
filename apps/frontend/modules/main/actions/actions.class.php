@@ -10,6 +10,11 @@
  */
 class mainActions extends sfActions
 {
+  public function preExecute(){
+	$request = $this->getRequest();
+	$this->channelId = $request->getParameter('channel', 'main');
+	$this->channel = ChannelPeer::retrieveBySlug($this->channelId);
+  }
  /**
   * Executes index action
   *
@@ -19,9 +24,11 @@ class mainActions extends sfActions
   {                           
 	$this->pager = new sfPropelPager('Track', 10);
 	$this->pager->setPage($request->getParameter('page', 1));
-	$this->pager->setCriteria(TrackPeer::getAvailableTracksCriteria());
+	$this->pager->setCriteria(TrackPeer::getAvailableTracksCriteria($this->channel));
 	$this->pager->setPeerMethod('doSelect');
 	$this->pager->init();       
+
+	$this->hasVotingRights = $this->hasVotingRights();
   }
 
  /**
@@ -31,29 +38,24 @@ class mainActions extends sfActions
   */
   public function executeVote(sfWebRequest $request)
   {
-
 	$this->forward404If(!$request->isXmlHttpRequest());
 	$this->getResponse()->setContentType('application/json');
-	$expire = (time()+60);
-	$id = isset($_COOKIE['ppr_uid']) ? $_COOKIE['ppr_uid'] : false;
-	if(!$id){
-		$arr = posix_getpwuid(posix_geteuid());                
-		$uid = base64_encode($arr['uid'].'_'.$arr['name']);
-		setcookie('ppr_uid', $uid, $expire, '/');
-	}
+	$this->hasVotingRights = $this->hasVotingRights();
 
-	$vTimes = isset($_COOKIE['ppr_ucid']) ? $_COOKIE['ppr_ucid'] : 0;
-	if($vTimes < 3){
+	if($this->hasVotingRights){
 		$track = TrackPeer::retrieveByPK($request->getParameter('id', 0));
 		if(!$track){
 			$this->getResponse()->setStatusCode(401);
 			return sfView::NONE;
 		}
-		$vote = TrackVotePeer::doVote($track);
-		$vCount = $vTimes+1;
-		setcookie('ppr_ucid', $vCount, $expire, '/');
-		return $this->renderText(json_encode(array('success' => true)));
-	}
+		$vote = TrackVotePeer::doVote($track, $this->channel);
+		$vCount = $this->vTimes+1;
+		setcookie('ppr_ucid', $vCount, $this->expire, '/');
+
+		return $this->renderText(json_encode(array('success' => true, 'hasVotingRights' => $this->hasVotingRights)));
+	}               
+	
+	return $this->renderText(json_encode(array('success' => false, 'hasVotingRights' => $this->hasVotingRights)));
   }
 
  /**
@@ -66,11 +68,12 @@ class mainActions extends sfActions
 	$this->forward404If(!$request->isXmlHttpRequest());
 	$this->pager = new sfPropelPager('Track', 10);
 	$this->pager->setPage($request->getParameter('page', 1));
-	$this->pager->setCriteria(TrackPeer::getAvailableTracksCriteria());
+	$this->pager->setCriteria(TrackPeer::getAvailableTracksCriteria($this->channel));
 	$this->pager->setPeerMethod('doSelect');
 	$this->pager->init();
-	
-	return $this->renderPartial('main/list', array('pager' => $this->pager));
+
+	$this->resetVotingRights();
+	return $this->renderPartial('main/list', array('pager' => $this->pager, 'hasVotingRights' => $this->hasVotingRights, 'channel' => $this->channel));
   }
                          
  /**
@@ -82,9 +85,9 @@ class mainActions extends sfActions
   {
 	$this->forward404If(!$request->isXmlHttpRequest());
 	
-	$this->pager = new sfPropelPager('Track', 10);
+	$this->pager = new sfPropelPager('Track', 3);
 	$this->pager->setPage($request->getParameter('page', 1));
-	$this->pager->setCriteria(TrackPeer::getTopNTracksInQueueCriteria());
+	$this->pager->setCriteria(TrackPeer::getTopNTracksInQueueCriteria($this->channel));
 	$this->pager->setPeerMethod('doSelect');
 	$this->pager->init();      
 	
@@ -102,18 +105,15 @@ class mainActions extends sfActions
 	$lines = array();
 	foreach($tracks as $track){
 		$lines[] = $track->getName();
-		$community = CommunityPeer::retrieveByPk($track->getId());
+		$community = CommunityPeer::retrieveByPk($track->getId(), $this->channel->getId());
 		if(!$community){
 			$community = new Community();
 			$community->setTrackId($track->getId());
+			$community->setChannelId($this->channel->getId());
 		}                                    
 		$community->setPlayCount($community->getPlayCount()+1);
 		$community->save();
 	}
-	
-	$handler = fopen('/Volumes/GitDevDisk2/tracks.txt', 'w+');
-	fwrite($handler, implode("\n", $lines));
-	fclose($handler);	
   }
 
  /**
@@ -153,6 +153,30 @@ class mainActions extends sfActions
 	}   
 	
 	return sfView::NONE;
+  }
+
+  protected function hasVotingRights(){
+	$this->expire = (time()+60);
+	$id = isset($_COOKIE['ppr_uid']) ? $_COOKIE['ppr_uid'] : false;
+	if(!$id){
+		$arr = posix_getpwuid(posix_geteuid());                
+		$uid = base64_encode($arr['uid'].'_'.$arr['name']);
+		setcookie('ppr_uid', $uid, $this->expire, '/');
+	}
+
+	$this->vTimes = isset($_COOKIE['ppr_ucid']) ? $_COOKIE['ppr_ucid'] : 0;
+
+	return ($this->vTimes < 3);
+  }
+
+  protected function resetVotingRights(){
+	$arr = posix_getpwuid(posix_geteuid());                
+	$uid = base64_encode($arr['uid'].'_'.$arr['name']);
+
+	if(isset($_COOKIE['ppr_uid'])) setcookie('ppr_uid', '', 1, '/');
+	if(isset($_COOKIE['ppr_ucid'])) setcookie('ppr_ucid', '', 1, '/');
+	
+	$this->hasVotingRights = true;
   }
 
 }

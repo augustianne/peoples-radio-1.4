@@ -3,12 +3,21 @@
 		return $(this).each(function(){
 			$(this).unbind('click').bind('click', function(){
 				var obj = $(this);
+				var l = new Image();
+				l.src = '/images/icon-loader.gif';
+				
 				$.ajax({
 					url: '/main/vote',
 					data: { id: obj.attr('data-id') },
 					dataType: 'json',
+					beforeSend: function(){
+						obj.html('<img src="'+l.src+'" width="20" />');
+					},
 					success: function(data){
-						obj.parent('li').remove();
+						if(data.success)
+							obj.parent('li').remove();
+						if(!data.hasVotingRights)
+							$('.vote').hide();
 					}
 				});                     
 				return false;

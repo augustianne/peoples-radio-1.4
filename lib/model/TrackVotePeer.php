@@ -18,22 +18,31 @@
  */
 class TrackVotePeer extends BaseTrackVotePeer {
 
-	public static function doVote(Track $track=null){
+	public static function doVote(Track $track=null, Channel $channel){
 		$id = $track->getId();             
-		$vote = $track->getTrackVote();
+		$vote = TrackVotePeer::retrieveByPk($track->getId(), $channel->getId());
 
 		if(!$vote){
 			$c = new Criteria();
 			$c->add(TrackVotePeer::TRACK_ID, $track->getId());
+			$c->add(TrackVotePeer::CHANNEL_ID, $channel->getId());
 			$id = TrackVotePeer::doInsert($c);
 		}
 		
-		$vote = TrackVotePeer::retrieveByPk($id);
+		$vote = TrackVotePeer::retrieveByPk($track->getId(), $channel->getId());
 		$vote->setAllVotes($vote->getAllVotes()+1);
 		$vote->setTempVotes($vote->getTempVotes()+1);
 		$vote->save();
 
 		return $vote;
+	}
+
+	public static function resetVotes(Track $track=null, Channel $channel){
+		$vote = TrackVotePeer::retrieveByPk($track->getId(), $channel->getId());
+		if($vote){ 
+			$vote->setTempVotes(0); 
+			$vote->save();
+		}
 	}
 
 } // TrackVotePeer

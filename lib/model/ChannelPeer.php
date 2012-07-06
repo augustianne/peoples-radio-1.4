@@ -18,4 +18,11 @@
  */
 class ChannelPeer extends BaseChannelPeer {
 
+	public static function retrieveBySlug($slug){
+		$c = new Criteria;
+		$c->add(ChannelPeer::SLUG, $slug);
+
+		return self::doSelectOne($c);
+	}
+
 } // ChannelPeer

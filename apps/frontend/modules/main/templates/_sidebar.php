@@ -21,7 +21,7 @@
 			</div>
 			<h3>Playlist</h3> 
 			<div id="community">  
-				<?php include_component('main','playlist'); ?>
+				<?php include_component('main','playlist', array('channelId' => $channelId)); ?>
 			</div>
 		</article>
 		<article class="blg">
