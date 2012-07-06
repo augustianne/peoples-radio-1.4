@@ -20,16 +20,17 @@ class TrackPeer extends BaseTrackPeer {
 
 	public static function getAvailableTracksCriteria(Channel $channel=null){
 		$criteria = new Criteria();
-		$criteria->addJoin(TrackPeer::ID, ChannelTrackPeer::TRACK_ID, Criteria::JOIN);
-		$criteria->add(ChannelTrackPeer::CHANNEL_ID, $channel->getId());
+		// $criteria->addJoin(TrackPeer::ID, ChannelTrackPeer::TRACK_ID, Criteria::JOIN);
+		// $criteria->add(ChannelTrackPeer::CHANNEL_ID, $channel->getId());
 		
 		$communityJoin = array(
 			array(TrackPeer::ID, CommunityPeer::TRACK_ID),
-			array(CommunityPeer::CHANNEL_ID, $channel->getId()),
+			// array(CommunityPeer::CHANNEL_ID, $channel->getId()),
 		);
 
 		$criteria->addMultipleJoin($communityJoin, Criteria::LEFT_JOIN);
 		$criteria->add(CommunityPeer::TRACK_ID, NULL, Criteria::ISNULL);
+		$criteria->addGroupByColumn(TrackPeer::ID);
 		$criteria->addDescendingOrderByColumn('RAND()');
 		
 		return $criteria;
