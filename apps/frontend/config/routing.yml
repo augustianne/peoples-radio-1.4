@@ -4,7 +4,7 @@
 # default rules
 homepage:
   url:   /
-  param: { module: main, action: index }
+  param: { module: main, action: home }
 
 channel:
   url:   /:channel

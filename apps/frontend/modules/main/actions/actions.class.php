@@ -18,6 +18,7 @@ class mainActions extends sfActions
 
 	$this->forward404If(!$this->channel AND ($request->isMethod(sfRequest::POST) == false));
   }
+
  /**
   * Executes index action
   *
@@ -32,6 +33,15 @@ class mainActions extends sfActions
 	$this->pager->init();       
 
 	$this->hasVotingRights = $this->hasVotingRights();
+  }
+
+ /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeHome(sfWebRequest $request)
+  {                    
   }
 
  /**

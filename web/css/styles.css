@@ -76,12 +76,12 @@ article.chn a:hover { opacity:1;}
 h2.chn { font-size: 20px; color: #41B7D8;}
 h2.chn a { font-size: 20px; color: #fff; }
 /*Queue List*/
-.radio { background:transparent url('/images/albumbck.jpg') no-repeat left top; overflow: hidden; margin-bottom: 20px; border-radius:4px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46); }
+.radio { background:transparent url('/images/albumbck.jpg') repeat left top; overflow: hidden; margin-bottom: 20px; border-radius:4px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46); }
 .radio span { border-radius: 50px; border: 1px solid #bbb; color: #eee; padding: 3px 10px 2px;  text-transform: uppercase; font-size: 10px; margin-bottom: 10px; display: inline-block; opacity:0.5;}
-.radio .atr { padding: 10px 5px; } 
+.radio .atr { padding: 10px; } 
 .radio h3 { color: #fff; letter-spacing: 0; margin: 0; }
 .radio em { font: italic 12px 'Pontano Sans',sans-serif; display: block; color: #888; }
-.radio img { width: 177px;}
+.radio img { width: 300px; margin-bottom: 10px;}
 .player { float:left; width: 220px; }
 
 .que li { border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 5px 0; overflow: hidden; line-height: 22px; }
@@ -104,22 +104,10 @@ h2.chn a { font-size: 20px; color: #fff; }
 /*Inputs*/
 input, textarea { font:normal 14px/22px 'Pontano Sans', sans-serif; }
 .frm textarea 	{ border: 1px solid #d1eff8; background-color:#edfbff; border-radius: 4px; resize:none; padding: 4px 5px; width: 95%; }
-.frm input	   	{ 	color: #fff; border: 0; border-radius: 4px; cursor: pointer; font-size: 12px; padding: 5px 15px; font-size: 14px;
-					background-image: linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-				  	background-image: -o-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-					background-image: -moz-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-					background-image: -webkit-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-					background-image: -ms-linear-gradient(bottom, rgb(128,0,87) 28%, rgb(173,136,136) 82%);
-
-					background-image: -webkit-gradient(
-					linear,
-					left bottom,
-					left top,
-					color-stop(0.28, rgb(128,0,87)),
-					color-stop(0.82, rgb(173,136,136))
-				); }
+.frm input	   	{ 	color: #fff; border: 0; border-radius: 4px; cursor: pointer; font-size: 12px; padding: 5px 15px; font-size: 14px; }
+.frm input[type="text"] { border: 1px solid #ddd; margin-right: 0; }
 				
-/* buttin */
+/* button */
 
 button, .button {
     max-width: 180px;
