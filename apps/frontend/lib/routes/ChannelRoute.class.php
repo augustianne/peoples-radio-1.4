@@ -6,7 +6,7 @@ class ChannelRoute extends sfRequestRoute
         $match = parent::matchesUrl($url, $context);
         if($match){
             $pathInfo = $context['path_info'];
-            $pathChunks = explode('/',substr($pathInfo,1,strlen($pathInfo)));
+            $pathChunks = explode('/', substr($pathInfo,1,strlen($pathInfo)));
             $channel = ChannelPeer::retrieveBySlug($pathChunks[0]);
             if(is_null($channel)){
                 return false;
