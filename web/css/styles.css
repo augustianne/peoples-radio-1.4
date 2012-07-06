@@ -81,6 +81,7 @@ h2.chn a { font-size: 20px; color: #fff; }
 .radio .atr { padding: 10px 5px; } 
 .radio h3 { color: #fff; letter-spacing: 0; margin: 0; }
 .radio em { font: italic 12px 'Pontano Sans',sans-serif; display: block; color: #888; }
+.radio img { width: 177px;}
 .player { float:left; width: 220px; }
 
 .que li { border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 5px 0; overflow: hidden; line-height: 22px; }
