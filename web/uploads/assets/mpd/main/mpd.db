@@ -1,0 +1,1030 @@
+info_begin
+format: 1
+mpd_version: 0.16.8
+fs_charset: UTF-8
+tag: Artist
+tag: ArtistSort
+tag: Album
+tag: AlbumArtist
+tag: AlbumArtistSort
+tag: Title
+tag: Track
+tag: Name
+tag: Genre
+tag: Date
+tag: Composer
+tag: Performer
+tag: Disc
+tag: MUSICBRAINZ_ARTISTID
+tag: MUSICBRAINZ_ALBUMID
+tag: MUSICBRAINZ_ALBUMARTISTID
+tag: MUSICBRAINZ_TRACKID
+info_end
+song_begin: 019 B.o.B - So Good.mp3
+Time: 213
+mtime: 1340931218
+song_end
+song_begin: 002 Fun. ft. Janelle Monae - We Are Young.mp3
+Time: 250
+Artist: fun.
+Title: We Are Young (Feat. Janelle Monáe)
+Album: Billboard Hot 100: 05-12-2012
+Track: 02
+Date: 2011
+Genre: Indie
+mtime: 1340931211
+song_end
+song_begin: 003 Maroon 5 - Payphone (feat. Wiz Khalifa).mp3
+Time: 231
+Artist: Maroon 5
+Title: Payphone (feat. Wiz Khalifa)
+Album: Billboard Hot 100: 05-12-2012
+Track: 03
+Date: 2012
+Genre: Pop
+Composer: Adam Levine, Shellback, Benjamin Levin, Ammar Malik, Dan Omelio & Cameron Thomaz
+mtime: 1340931211
+song_end
+song_begin: 004 The Wanted - Glad You Came.mp3
+Time: 198
+Artist: The Wanted
+Title: Glad You Came
+Album: Billboard Hot 100: 05-12-2012
+Track: 04
+Date: 2011
+Genre: Pop
+mtime: 1340931212
+song_end
+song_begin: 005 Carly Rae Jepsen - Call Me Maybe.mp3
+Time: 193
+Artist: Carly Rae Jepsen
+Title: Call Me Maybe
+Album: Billboard Hot 100: 05-12-2012
+Track: 05
+Date: 2011
+Genre: Pop
+mtime: 1340931212
+song_end
+song_begin: 006 Flo Rida feat. Sia - Wild Ones.mp3
+Time: 234
+Artist: Flo Rida
+Title: Wild Ones (Feat. Sia)
+Album: Billboard Hot 100: 05-12-2012
+Track: 06
+Date: 2011
+Genre: Dance
+mtime: 1340931213
+song_end
+song_begin: 007 Justin Bieber - Boyfriend.mp3
+Time: 172
+Artist: Justin Bieber
+Title: Boyfriend
+Album: Billboard Hot 100: 05-12-2012
+Track: 07
+Date: 2012
+Genre: Pop
+Composer: Justin Bieber, Mike Posner, Mason Levy & Matthew Musto
+mtime: 1340931213
+song_end
+song_begin: 008 Nicki Minaj - Starships.mp3
+Time: 211
+Artist: Nicki Minaj
+Title: Starships
+Album: Billboard Hot 100: 05-12-2012
+Track: 08
+Date: 2012
+Genre: Hip-Hop
+mtime: 1340931213
+song_end
+song_begin: 009 One Direction - What Makes You Beautiful.mp3
+Time: 198
+Artist: One Direction
+Title: What Makes You Beautiful
+Album: Billboard Hot 100: 05-12-2012
+Track: 09
+Date: 2011
+Genre: Pop
+Composer: Carl Falk, Savan Kotecha, Rami Yacoub
+mtime: 1340931214
+song_end
+song_begin: 010 Kelly Clarkson - What Doesn't Kill You.mp3
+Time: 222
+Artist: Kelly Clarkson
+Title: What Doesn't Kill You (Stronger)
+Album: Billboard Hot 100: 05-12-2012
+Track: 10
+Date: 2011
+Genre: Pop
+mtime: 1340931214
+song_end
+song_begin: 012 Train - Drive By.mp3
+Time: 197
+Artist: Train
+Title: Drive By
+Album: Billboard Hot 100: 05-12-2012
+Track: 12
+Date: 2012
+Genre: Pop
+mtime: 1340931215
+song_end
+song_begin: 013 Calvin Harris - Feel So Close.mp3
+Time: 208
+Artist: Calvin Harris
+Title: Feel So Close
+Album: Billboard Hot 100: 05-12-2012
+Track: 13
+Date: 2011
+Genre: House
+mtime: 1340931216
+song_end
+song_begin: 014 Drake ft. Rihanna - Take Care.mp3
+Time: 277
+Artist: Drake
+Title: Take Care (Feat. Rihanna)
+Album: Billboard Hot 100: 05-12-2012
+Track: 14
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931216
+song_end
+song_begin: 015 Drake ft. Lil Wayne - The Motto.mp3
+Time: 182
+Artist: Drake
+Title: The Motto (Feat. Lil Wayne) [Bonus Track]
+Album: Billboard Hot 100: 05-12-2012
+Track: 15
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931217
+song_end
+song_begin: 016 Adele - Rumour Has It.mp3
+Time: 223
+Artist: ADELE
+Title: Rumour Has It
+Album: Billboard Hot 100: 05-12-2012
+Track: 16
+Date: 2011
+Genre: Pop
+mtime: 1340931217
+song_end
+song_begin: 017 Wiz Khalifa - Work Hard, Play Hard.mp3
+Time: 221
+Artist: Wiz Khalifa
+Title: Work Hard, Play Hard
+Album: Billboard Hot 100: 05-12-2012
+Track: 17
+Date: 2012
+Genre: Hip-Hop
+mtime: 1340931217
+song_end
+song_begin: 018 Usher - Climax.mp3
+Time: 233
+Artist: Usher
+Title: Climax
+Album: Billboard Hot 100: 05-12-2012
+Track: 18
+Date: 2012
+Genre: R&B/Soul
+Composer: Ariel Rechtshaid, Johnny Natural, Sean Fenton, Usher Raymond & Wesley Pentz
+mtime: 1340931218
+song_end
+song_begin: 020 Taylor Swift - Eyes Open.mp3
+Time: 244
+Artist: Taylor Swift
+Title: Eyes Open
+Album: Billboard Hot 100: 05-12-2012
+Track: 20
+Date: 2012
+Genre: Soundtrack
+mtime: 1340931219
+song_end
+song_begin: 021 David Guetta ft. Nicki Minaj - Turn Me On.mp3
+Time: 200
+Artist: David Guetta
+Title: Turn Me On (Feat. Nicki Minaj)
+Album: Billboard Hot 100: 05-12-2012
+Track: 21
+Date: 2011
+Genre: Dance
+mtime: 1340931219
+song_end
+song_begin: 022 Adele - Set Fire to the Rain.mp3
+Time: 242
+Artist: ADELE
+Title: Set Fire To The Rain
+Album: Billboard Hot 100: 05-12-2012
+Track: 22
+Date: 2011
+Genre: Pop
+mtime: 1340931221
+song_end
+song_begin: 023 Eric Church - Springsteen.mp3
+Time: 263
+Artist: Eric Church
+Title: Springsteen
+Album: Billboard Hot 100: 05-12-2012
+Track: 23
+Date: 2011-:--00T-1::-
+Genre: Country
+mtime: 1340931221
+song_end
+song_begin: 024 Rihanna ft. Chris Brown - Birthday Cake (Remix).mp3
+Time: 219
+Artist: Rihanna
+Title: Birthday Cake (feat. Chris Brown) (Remix)
+Album: Billboard Hot 100: 05-12-2012
+Track: 24
+Date: 2012
+Genre: Hip-Hop
+mtime: 1340931222
+song_end
+song_begin: 025 Jennifer Lopez - Dance Again (feat. Pitbull).mp3
+Time: 237
+Artist: Jennifer Lopez
+Title: Dance Again (feat. Pitbull)
+Album: Billboard Hot 100: 05-12-2012
+Track: 25
+Date: 2012
+Genre: Pop
+Composer: AJ Junior, Bilal "The Chef" Hajii, Enrique Iglesias, Pitbull & RedOne
+mtime: 1340931222
+song_end
+song_begin: 026 Rihanna ft. Calvin Harris - We Found Love.mp3
+Time: 216
+Artist: Rihanna
+Title: We Found Love (Feat. Calvin Harris)
+Album: Billboard Hot 100: 05-12-2012
+Track: 26
+Date: 2011
+Genre: Pop
+mtime: 1340931223
+song_end
+song_begin: 027 Luke Bryan - Drunk On You.mp3
+Time: 214
+Artist: Luke Bryan
+Title: Drunk On You
+Album: Billboard Hot 100: 05-12-2012
+Track: 27
+Date: 2011
+Genre: Country
+mtime: 1340931223
+song_end
+song_begin: 028 Snoop Dogg & Wiz Khalifa ft. Bruno Mars - Young, Wild & Free.mp3
+Time: 208
+Artist: Snoop Dogg & Wiz Khalifa
+Title: Young, Wild & Free (Feat. Bruno Mars)
+Album: Billboard Hot 100: 05-12-2012
+Track: 28
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931223
+song_end
+song_begin: 029 Gym Class Heroes ft. Neon Hitch - Ass Back Home.mp3
+Time: 222
+Artist: Gym Class Heroes
+Title: Ass Back Home (Feat. Neon Hitch)
+Album: Billboard Hot 100: 05-12-2012
+Track: 29
+Date: 2011
+Genre: Pop
+mtime: 1340931224
+song_end
+song_begin: 030 Flo Rida - Good Feeling.mp3
+Time: 247
+Artist: Flo Rida
+Title: Good Feeling
+Album: Billboard Hot 100: 05-12-2012
+Track: 30
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931224
+song_end
+song_begin: 031 Carrie Underwood - Good Girl.mp3
+Time: 199
+Artist: Carrie Underwood
+Title: Good Girl
+Album: Billboard Hot 100: 05-12-2012
+Track: 31
+Date: 2012
+Genre: Country
+Composer: Carrie Underwood
+Performer: Carrie Underwood
+Performer: Carrie Underwood
+mtime: 1340931225
+song_end
+song_begin: 032 Karmin - Brokenhearted.mp3
+Time: 229
+Artist: Karmin
+Title: Brokenhearted
+Album: Billboard Hot 100: 05-12-2012
+Track: 32
+Date: 2012
+Genre: Pop
+mtime: 1340931225
+song_end
+song_begin: 033 Jason Mraz - I Won't Give Up.mp3
+Time: 242
+Artist: Jason Mraz
+Title: I Won't Give Up
+Album: Billboard Hot 100: 05-12-2012
+Track: 33
+Date: 2012
+Genre: Pop
+mtime: 1340931226
+song_end
+song_begin: 034 Jason Aldean - Fly Over States.mp3
+Time: 218
+Artist: Jason Aldean
+Title: Fly Over States
+Album: Billboard Hot 100: 05-12-2012
+Track: 34
+Date: 2010
+Genre: Country
+Composer: Michael Dulaney/Neil Thrasher
+mtime: 1340931227
+song_end
+song_begin: 035 Kirko Bangz - Drank In My Cup.mp3
+Time: 232
+Artist: Kirko Bangz
+Title: Drank In My Cup
+Album: Billboard Hot 100: 05-12-2012
+Track: 35
+Date: 2011
+Genre: Rap
+mtime: 1340931227
+song_end
+song_begin: 036 Tyga - Rack City.mp3
+Time: 209
+Artist: Tyga
+Title: Rack City
+Album: Billboard Hot 100: 05-12-2012
+Track: 36
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931228
+song_end
+song_begin: 037 LMFAO - Sexy and I Know It.mp3
+Time: 200
+Artist: LMFAO
+Title: Sexy And I Know It
+Album: Billboard Hot 100: 05-12-2012
+Track: 37
+Date: 2011
+Genre: Pop
+mtime: 1340931230
+song_end
+song_begin: 038 Miranda Lambert - Over You.mp3
+Time: 256
+Artist: Miranda Lambert
+Title: Over You
+Album: Billboard Hot 100: 05-12-2012
+Track: 38
+Date: 2011
+Genre: Country
+Composer: Miranda Lambert, Blake Shelton
+mtime: 1340931231
+song_end
+song_begin: 039 Kanye West - Mercy (feat. Big Sean, Pusha T, 2 Chainz).mp3
+Time: 333
+Artist: Kanye West
+Title: Mercy (feat. Big Sean, Pusha T, 2 Chainz)
+Album: Billboard Hot 100: 05-12-2012
+Track: 39
+Date: 2012
+Genre: Hip Hop/Rap
+Composer: Kanye West, Stephan Taft, Sean Anderson, Terrence Thornton, Tauheed Epps, James Thomas, Denzie Beagle, Winston Riley & Reggie Williams
+mtime: 1340931232
+song_end
+song_begin: 040 Ellie Goulding - Lights.mp3
+Time: 212
+Artist: Ellie Goulding
+Title: Lights
+Album: Billboard Hot 100: 05-12-2012
+Track: 40
+Date: 2011
+Genre: Pop
+mtime: 1340931234
+song_end
+song_begin: 041 LMFAO ft. Lauren Bennett & GoonRock - Party Rock Anthem.mp3
+Time: 263
+Artist: LMFAO
+Title: Party Rock Anthem (Feat. Lauren Bennett & Goonrock)
+Album: Billboard Hot 100: 05-12-2012
+Track: 41
+Date: 2011
+Genre: Pop
+mtime: 1340931234
+song_end
+song_begin: 042 Tyga - Faded (feat. Lil Wayne).mp3
+Time: 214
+Artist: Tyga
+Title: Faded (Feat. Lil Wayne)
+Album: Billboard Hot 100: 05-12-2012
+Track: 42
+Date: 2012
+Genre: Hip-Hop
+mtime: 1340931235
+song_end
+song_begin: 043 Kip Moore - Somethin' 'Bout A Truck.mp3
+Time: 181
+Artist: Kip Moore
+Title: Somethin' 'bout a Truck
+Album: Billboard Hot 100: 05-12-2012
+Track: 43
+Date: 2011
+Genre: Country
+Composer: Kip Moore
+mtime: 1340931235
+song_end
+song_begin: 044 Jessie J - Domino.mp3
+Time: 232
+Artist: Jessie J
+Title: Domino
+Album: Billboard Hot 100: 05-12-2012
+Track: 44
+Date: 2011
+Genre: Pop
+mtime: 1340931236
+song_end
+song_begin: 045 Lee Brice - A Woman Like You.mp3
+Time: 210
+Artist: Lee Brice
+Title: A Woman Like You
+Album: Billboard Hot 100: 05-12-2012
+Track: 45
+Date: 2011
+Genre: Country
+mtime: 1340931237
+song_end
+song_begin: 046 Pitbull ft. Chris Brown - International Love.mp3
+Time: 229
+Artist: Pitbull
+Title: International Love (Feat. Chris Brown)
+Album: Billboard Hot 100: 05-12-2012
+Track: 46
+Date: 2011
+Genre: Pop
+mtime: 1340931238
+song_end
+song_begin: 047 Maroon 5 ft. Christina Aguilera - Moves Like Jagger.mp3
+Time: 201
+Artist: Maroon 5
+Title: Moves Like Jagger (The Voice Performance) [Feat. Christina Aguilera]
+Album: Billboard Hot 100: 05-12-2012
+Track: 47
+Date: 2011
+Genre: Pop
+mtime: 1340931239
+song_end
+song_begin: 049 LoveRance - UP! (feat. 50 Cent).mp3
+Time: 231
+Artist: Loverance
+Title: Up! (Feat. 50 Cent)
+Album: Billboard Hot 100: 05-12-2012
+Track: 49
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931241
+song_end
+song_begin: 050 Lady Antebellum - Dancin' Away With My Heart.mp3
+Time: 233
+Artist: Lady Antebellum
+Title: Dancin' Away With My Heart
+Album: Billboard Hot 100: 05-12-2012
+Track: 50
+Date: 2011
+Genre: Country
+mtime: 1340931242
+song_end
+song_begin: 051 Rascal Flatts - Banjo.mp3
+Time: 219
+Artist: Rascal Flatts
+Title: Banjo
+Album: Billboard Hot 100: 05-12-2012
+Track: 51
+Date: 2012
+Genre: Country
+mtime: 1340931243
+song_end
+song_begin: 052 Blake Shelton - Drink On It.mp3
+Time: 212
+Artist: Blake Shelton
+Title: Drink On It
+Album: Billboard Hot 100: 05-12-2012
+Track: 52
+Date: 2011
+Genre: Country
+Composer: Jessi Alexander/Jon Randall/Rodney Clawson
+mtime: 1340931244
+song_end
+song_begin: 053 Travis Porter - Ayy Ladies (feat. Tyga).mp3
+Time: 213
+Artist: Travis Porter
+Title: Ayy Ladies (Feat. Tyga)
+Album: Billboard Hot 100: 05-12-2012
+Track: 53
+Date: 2012-00-00
+Genre: R&B
+mtime: 1340931245
+song_end
+song_begin: 054 Chris Brown - Turn Up the Music.mp3
+Time: 229
+Artist: Chris Brown
+Title: Turn Up The Music
+Album: Billboard Hot 100: 05-12-2012
+Track: 54
+Date: 2012
+Genre: R&B/Soul
+Composer: Chris Brown, Alexander Palmer, Damon Thomas, Harvey Mason, Jr., Michael Jiminez & Terrance Coles
+mtime: 1340931245
+song_end
+song_begin: 055 Kenny Chesney & Tim McGraw - Feel Like A Rock Star.mp3
+Time: 207
+Artist: Kenny Chesney & Tim McGraw
+Title: Feel Like A Rock Star
+Album: Billboard Hot 100: 05-12-2012
+Track: 55
+Date: 2012
+Genre: Country
+mtime: 1340931246
+song_end
+song_begin: 056 Rihanna ft. Jay-Z - Talk That Talk.mp3
+Time: 210
+Artist: Rihanna
+Title: Talk That Talk (Feat. Jay-Z)
+Album: Billboard Hot 100: 05-12-2012
+Track: 56
+Date: 2011
+Genre: Pop
+mtime: 1340931246
+song_end
+song_begin: 057 Young Jeezy - Leave You Alone (feat. Ne-Yo).mp3
+Time: 329
+Artist: Young Jeezy
+Title: Leave You Alone (feat. Ne-Yo)
+Album: Billboard Hot 100: 05-12-2012
+Track: 57
+Date: 2012
+Genre: Rap
+Performer: www.SongsLover.com
+Performer: www.SongsLover.com
+mtime: 1340931247
+song_end
+song_begin: 058 Eli Young Band - Even If It Breaks Your Heart.mp3
+Time: 220
+Artist: Eli Young Band
+Title: Even If It Breaks Your Heart
+Album: Billboard Hot 100: 05-12-2012
+Track: 58
+Date: 2011
+Genre: Country
+Composer: Eric Paslay
+mtime: 1340931247
+song_end
+song_begin: 059 Nicki Minaj - Beez In The Trap (feat. 2 Chainz).mp3
+Time: 269
+Artist: Nicki Minaj
+Title: Beez In The Trap (feat. 2 Chainz)
+Album: Billboard Hot 100: 05-12-2012
+Track: 59
+Date: 2012-:0-04T00::0
+Genre: Hip-Hop
+Composer: M.Jordan
+mtime: 1340931248
+song_end
+song_begin: 060 Tim McGraw - Better Than I Used to Be.mp3
+Time: 202
+Artist: Tim McGraw
+Title: Better Than I Used To Be
+Album: Billboard Hot 100: 05-12-2012
+Track: 60
+Date: 2011
+Genre: Country
+mtime: 1340931248
+song_end
+song_begin: 061 Zac Brown Band - No Hurry.mp3
+Time: 226
+Artist: Zac Brown Band
+Title: No Hurry
+Album: Billboard Hot 100: 05-12-2012
+Track: 61
+Date: 2010
+Genre: Country
+Composer: James Otto/Wyatt Durrette/Zac Brown
+mtime: 1340931249
+song_end
+song_begin: 062 Linkin Park - Burn It Down.mp3
+Time: 231
+Artist: Linkin Park
+Title: Burn It Down
+Album: Billboard Hot 100: 05-12-2012
+Track: 62
+Date: 2012
+Genre: Alternative
+mtime: 1340931249
+song_end
+song_begin: 063 David Guetta ft. Sia - Titanium.mp3
+Time: 245
+Artist: David Guetta
+Title: Titanium (feat. Sia)
+Album: Billboard Hot 100: 05-12-2012
+Track: 63
+Date: 2011
+Genre: Dance
+mtime: 1340931250
+song_end
+song_begin: 064 Flo Rida - Whistle.mp3
+Time: 225
+Artist: Flo Rida
+Title: Whistle
+Album: Billboard Hot 100: 05-12-2012
+Track: 64
+Date: 2012
+Genre: Hip Hop/Rap
+mtime: 1340931251
+song_end
+song_begin: 065 Glee Cast - How Will I Know (Glee Cast Version).mp3
+Time: 167
+Artist: Glee Cast
+Title: How Will I Know (Glee Cast Version)
+Album: Billboard Hot 100: 05-12-2012
+Track: 65
+Date: 2012
+Genre: Pop
+mtime: 1340931252
+song_end
+song_begin: 066 Neon Trees - Everybody Talks.mp3
+Time: 179
+Artist: Neon Trees
+Title: Everybody Talks
+Album: Billboard Hot 100: 05-12-2012
+Track: 66
+Date: 2011
+Genre: Alternative
+Composer: Tyler Glenn & Tim Pagnotta
+mtime: 1340931252
+song_end
+song_begin: 067 Ca$hOut - Cashin' Out.mp3
+Time: 239
+Artist: Ca$hOut
+Title: Cashin' Out
+Album: Billboard Hot 100: 05-12-2012
+Track: 67
+Date: 2012
+Genre: Hip-Hop
+Composer: Gary Hill & John Michael Hakeem Gibson
+mtime: 1340931253
+song_end
+song_begin: 068 Chris Brown Feat Kevin McCall - Strip.mp3
+Time: 170
+Artist: Chris Brown
+Title: Strip (Feat. Kevin Mccall)
+Album: Billboard Hot 100: 05-12-2012
+Track: 68
+Date: 2011
+Genre: R&B
+mtime: 1340931253
+song_end
+song_begin: 069 Demi Lovato - Give Your Heart a Break.mp3
+Time: 205
+Artist: Demi Lovato
+Title: Give Your Heart a Break
+Album: Billboard Hot 100: 05-12-2012
+Track: 69
+Date: 2012
+Genre: Pop
+mtime: 1340931254
+song_end
+song_begin: 070 Usher - Scream.mp3
+Time: 235
+Artist: Usher
+Title: Scream
+Album: Billboard Hot 100: 05-12-2012
+Track: 70
+Date: 2012
+Genre: R&B/Soul
+Composer: Max Martin, Savan Kotecha, Shellback & Usher Raymond
+mtime: 1340931254
+song_end
+song_begin: 071 Brantley Gilbert - You Don't Know Her Like I Do.mp3
+Time: 287
+Artist: Brantley Gilbert
+Title: You Don't Know Her Like I Do
+Album: Billboard Hot 100: 05-12-2012
+Track: 71
+Date: 2011
+Genre: Country
+mtime: 1340931255
+song_end
+song_begin: 072 Drake ft. Lil Wayne - HYFR (Hell Yeah Fucking Right).mp3
+Time: 207
+Artist: Drake
+Title: HYFR (Hell Ya Fucking Right) [feat. Lil Wayne]
+Album: Billboard Hot 100: 05-12-2012
+Track: 72
+Date: 2011
+Genre: Hip-Hop
+mtime: 1340931256
+song_end
+song_begin: 073 M83 - Midnight City.mp3
+Time: 243
+Artist: M83
+Title: Midnight City
+Album: Billboard Hot 100: 05-12-2012
+Track: 73
+Date: 2011
+Genre: New Wave
+mtime: 1340931256
+song_end
+song_begin: 074 fun. - Some Nights.mp3
+Time: 277
+Artist: fun.
+Title: Some Nights
+Album: Billboard Hot 100: 05-12-2012
+Track: 74
+Date: 2012
+Genre: Indie
+mtime: 1340931257
+song_end
+song_begin: 075 One Direction - One Thing.mp3
+Time: 197
+Artist: One Direction
+Title: One Thing
+Album: Billboard Hot 100: 05-12-2012
+Track: 75
+Date: 2011-:1-11T00::0
+Genre: Pop
+Composer: Carl Falk, Rami Yacoub & Savan Kotecha
+mtime: 1340931257
+song_end
+song_begin: 076 Nicki Minaj - Right By My Side (feat. Chris Brown).mp3
+Time: 265
+Artist: Nicki Minaj
+Title: Right By My Side (feat. Chris Brown)
+Album: Billboard Hot 100: 05-12-2012
+Track: 76
+Date: 2012-:0-04T00::0
+Genre: Hip-Hop
+Composer: R. Colson
+mtime: 1340931258
+song_end
+song_begin: 077 Taylor Swift Feat. The Civil Wars - Safe & Sound.mp3
+Time: 236
+Artist: Taylor Swift
+Title: Safe & Sound (Feat. The Civil Wars)
+Album: Billboard Hot 100: 05-12-2012
+Track: 77
+Date: 2011
+Genre: Pop
+Performer: www.SongsLover.com
+Performer: www.SongsLover.com
+mtime: 1340931258
+song_end
+song_begin: 078 Rihanna - Where Have You Been.mp3
+Time: 243
+Artist: Rihanna
+Title: Where Have You Been
+Album: Billboard Hot 100: 05-12-2012
+Track: 78
+Date: 2011
+Genre: Pop
+mtime: 1340931259
+song_end
+song_begin: 079 John Legend - Tonight (Best You Ever Had) [feat. Ludacris].mp3
+Time: 241
+Artist: John Legend
+Title: Tonight (Best You Ever Had) [feat. Ludacris]
+Album: Billboard Hot 100: 05-12-2012
+Track: 79
+Date: 2012
+Genre: R&B/Soul
+Composer: Allen Arthur, Christopher Bridges, Clayton Reilly, John Stephens, Keith Justice & Miguel Pimentel
+mtime: 1340931259
+song_end
+song_begin: 080 Rick Ross - Stay Schemin' (feat. Drake & French Montana).mp3
+Time: 268
+Artist: Rick Ross
+Title: Stay Schemin' (feat. Drake & French Montana)
+Album: Billboard Hot 100: 05-12-2012
+Track: 80
+Date: 2012
+Genre: Hip-Hop
+Composer: William Roberts, William Roberts, Anthony Tucker, Aubrey Graham & Karim Kharbouch
+mtime: 1340931260
+song_end
+song_begin: 081 Michel Teló - Ai Se Eu Te Pego.mp3
+Time: 165
+Artist: Michel Teló
+Title: Ai Se Eu Te Pego
+Album: Billboard Hot 100: 05-12-2012
+Track: 81
+Date: 2011
+Genre: Dance
+mtime: 1340931260
+song_end
+song_begin: 082 Skrillex - Bangarang (feat. Sirah).mp3
+Time: 215
+Artist: Skrillex
+Title: Bangarang (Feat. Sirah)
+Album: Billboard Hot 100: 05-12-2012
+Track: 82
+Date: 2011-:2-12T00::0
+Genre: Dubstep
+mtime: 1340931261
+song_end
+song_begin: 083 Gloriana - (Kissed You) Good Night.mp3
+Time: 218
+Artist: Gloriana
+Title: (Kissed You) Good Night
+Album: Billboard Hot 100: 05-12-2012
+Track: 83
+Date: 2011
+Genre: Country
+mtime: 1340931261
+song_end
+song_begin: 084 Fat Joe - Another Round (feat. Chris Brown).mp3
+Time: 289
+Artist: Fat Joe & Chris Brown
+Title: Another Round (feat. Chris Brown)
+Album: Billboard Hot 100: 05-12-2012
+Track: 84
+Date: 2011
+Genre: Pop
+mtime: 1340931262
+song_end
+song_begin: 085 Toby Keith - Beers Ago.mp3
+Time: 208
+Artist: Toby Keith
+Title: Beers Ago
+Album: Billboard Hot 100: 05-12-2012
+Track: 85
+Date: 2011
+Genre: Country
+mtime: 1340931263
+song_end
+song_begin: 086 Josh Turner - Time Is Love.mp3
+Time: 178
+Artist: Josh Turner
+Title: Time Is Love
+Album: Billboard Hot 100: 05-12-2012
+Track: 86
+Date: 2012
+Genre: Country
+mtime: 1340931263
+song_end
+song_begin: 087 DJ Khaled - Take It to the Head (feat. Chris Brown, Rick Ross, Nicki Minaj, & Lil Wayne).mp3
+Time: 265
+Artist: DJ Khaled
+Title: Take It to the Head (feat. Chris Brown, Rick Ross, Nicki Minaj & Lil Wayne)
+Album: Billboard Hot 100: 05-12-2012
+Track: 87
+Date: 2012
+Genre: Hip Hop/Rap
+mtime: 1340931264
+song_end
+song_begin: 088 Of Monsters and Men - Little Talks.mp3
+Time: 254
+Artist: Of Monsters and Men
+Title: Little Talks
+Album: Billboard Hot 100: 05-12-2012
+Track: 88
+Date: 2012
+Genre: Folk
+mtime: 1340931264
+song_end
+song_begin: 089 Calvin Harris - Let's Go (feat. Ne-Yo).mp3
+Time: 225
+Artist: Calvin Harris
+Title: Let's Go (feat. Ne-Yo)
+Album: Billboard Hot 100: 05-12-2012
+Track: 89
+Date: 2012
+Genre: Dance
+mtime: 1340931265
+song_end
+song_begin: 090 Mac Miller - Loud.mp3
+Time: 171
+Artist: Mac Miller
+Title: Loud
+Album: Billboard Hot 100: 05-12-2012
+Track: 90
+Date: 2012
+Genre: Hip Hop/Rap
+Composer: Malcolm McCormick, Eric Dan, Jeremy Kulousek & Zachary Vaughan
+mtime: 1340931265
+song_end
+song_begin: 091 Havana Brown - We Run the Night (feat. Pitbull).mp3
+Time: 228
+Artist: Havana Brown
+Title: We Run the Night (feat. Pitbull)
+Album: Billboard Hot 100: 05-12-2012
+Track: 91
+Date: 2011
+Genre: Pop
+Composer: Cassie Davis, Snob Scrilla, RedOne, John Mamann, Yohanne Simon & JEAN CLAUDE SINDRES
+mtime: 1340931266
+song_end
+song_begin: 092 Glee Cast - It's Not Right But It's Okay (Glee Cast Version).mp3
+Time: 258
+Artist: Glee Cast
+Title: It's Not Right But It's Okay (Glee Cast Version)
+Album: Billboard Hot 100: 05-12-2012
+Track: 92
+Date: 2012
+Genre: Pop
+mtime: 1340931266
+song_end
+song_begin: 093 Chris Cagle - Got My Country On.mp3
+Time: 236
+Artist: Chris Cagle
+Title: Got My Country On
+Album: Billboard Hot 100: 05-12-2012
+Track: 93
+Date: 2012
+Genre: Country
+mtime: 1340931267
+song_end
+song_begin: 094 Andy Grammar - Fine By Me.mp3
+Time: 173
+Artist: Andy Grammer
+Title: Fine By Me
+Album: Billboard Hot 100: 05-12-2012
+Track: 94
+Date: 2011
+Genre: Pop
+mtime: 1340931267
+song_end
+song_begin: 095 Future - Magic (feat. T.I.).mp3
+Time: 213
+Artist: Future
+Title: Magic (Feat. T.I.)
+Album: Billboard Hot 100: 05-12-2012
+Track: 95
+Date: 2012
+Genre: Hip-Hop
+Composer: Clifford Joseph Harris Jr., Kevin Erondu & Nayvadius Wilburn
+mtime: 1340931268
+song_end
+song_begin: 096 Trey Songz - Heart Attack.mp3
+Time: 235
+Artist: Trey Songz
+Title: Heart Attack
+Album: Billboard Hot 100: 05-12-2012
+Track: 96
+Date: 2012
+Genre: R&B/Soul
+mtime: 1340931268
+song_end
+song_begin: 097 Drake - Crew Love (feat. The Weeknd).mp3
+Time: 209
+Artist: Drake
+Title: Crew Love (feat. The Weeknd)
+Album: Billboard Hot 100: 05-12-2012
+Track: 97
+Date: 2011-:1-11T00::0
+Genre: Hip-Hop
+Composer: A. Graham, N. Shebib, Anthony Palman, A. Tesfaye & C. Montagnese
+mtime: 1340931269
+song_end
+song_begin: 098 Craig Morgan - This Ole Boy.mp3
+Time: 198
+Artist: Craig Morgan
+Title: This Ole Boy
+Album: Billboard Hot 100: 05-12-2012
+Track: 98
+Date: 2012
+Genre: Country
+Composer: Ben Hayslip
+mtime: 1340931270
+song_end
+song_begin: 099 Hunter Hayes - Wanted.mp3
+Time: 229
+Artist: Hunter Hayes
+Title: Wanted
+Album: Billboard Hot 100: 05-12-2012
+Track: 99
+Date: 2011
+Genre: Country
+mtime: 1340931270
+song_end
+song_begin: 100 Skrillex - Scary Monsters and Nice Sprites.mp3
+Time: 243
+Artist: Skrillex
+Title: Scary Monsters And Nice Sprites
+Album: Billboard Hot 100: 05-12-2012
+Track: 100
+Date: 2010-:2-10T00::0
+Genre: Electronic
+mtime: 1340931271
+song_end
+song_begin: 048 Pitbull - Back in Time.mp3
+Time: 206
+Artist: Pitbull
+Title: Back in Time
+Album: Billboard Hot 100: 05-12-2012
+Track: 48
+Date: 2012
+Genre: Hip Hop/Rap
+Disc: 1/1
+mtime: 1340931240
+song_end

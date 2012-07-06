@@ -16,7 +16,7 @@ class mainActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request)
-  {
+  {                           
 	$this->pager = new sfPropelPager('Track', 10);
 	$this->pager->setPage($request->getParameter('page', 1));
 	$this->pager->setCriteria(TrackPeer::getAvailableTracksCriteria());
@@ -122,8 +122,9 @@ class mainActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeReadMp3(sfWebRequest $request)
-  {
-	$tracks = MP3_Reader::readMp3(sfConfig::get('sf_upload_dir').'/assets/tracks');
+  {                                                                              
+	$trackPath = sfConfig::get('sf_upload_dir').'/assets/tracks';
+	$tracks = MP3_Reader::readMp3($trackPath);
 	$coverDir = sfConfig::get('sf_upload_dir').'/assets/cover';
 	foreach($tracks as $track){                    
 		$cover = '';
@@ -140,7 +141,15 @@ class mainActions extends sfActions
 		$c->add(TrackPeer::GENRE, $track['genre']);
 		$c->add(TrackPeer::COVER, $cover);
 		
-		TrackPeer::doInsert($c);
+		$trackId = TrackPeer::doInsert($c);
+		
+		$c = new Criteria();
+		$c->add(ChannelTrackPeer::TRACK_ID, $trackId);
+		$c->add(ChannelTrackPeer::CHANNEL_ID, 1);
+
+		$channelId = ChannelTrackPeer::doInsert($c);
+		
+		MP3_Writer::writeDbId($trackPath.'/'.$track['filename'], $trackId);
 	}   
 	
 	return sfView::NONE;

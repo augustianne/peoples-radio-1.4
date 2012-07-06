@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class that represents a row from the 'community' table.
+ * Base class that represents a row from the 'channel_track' table.
  *
  * 
  *
@@ -11,14 +11,14 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseCommunity extends BaseObject  implements Persistent {
+abstract class BaseChannelTrack extends BaseObject  implements Persistent {
 
 
 	/**
 	 * The Peer class.
 	 * Instance provides a convenient way of calling static methods on a class
 	 * that calling code may not be able to identify.
-	 * @var        CommunityPeer
+	 * @var        ChannelTrackPeer
 	 */
 	protected static $peer;
 
@@ -33,12 +33,6 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * @var        int
 	 */
 	protected $channel_id;
-
-	/**
-	 * The value for the play_count field.
-	 * @var        int
-	 */
-	protected $play_count;
 
 	/**
 	 * @var        Track
@@ -66,7 +60,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 
 	// symfony behavior
 	
-	const PEER = 'CommunityPeer';
+	const PEER = 'ChannelTrackPeer';
 
 	/**
 	 * Get the [track_id] column value.
@@ -89,20 +83,10 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [play_count] column value.
-	 * 
-	 * @return     int
-	 */
-	public function getPlayCount()
-	{
-		return $this->play_count;
-	}
-
-	/**
 	 * Set the value of [track_id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     Community The current object (for fluent API support)
+	 * @return     ChannelTrack The current object (for fluent API support)
 	 */
 	public function setTrackId($v)
 	{
@@ -112,7 +96,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 
 		if ($this->track_id !== $v) {
 			$this->track_id = $v;
-			$this->modifiedColumns[] = CommunityPeer::TRACK_ID;
+			$this->modifiedColumns[] = ChannelTrackPeer::TRACK_ID;
 		}
 
 		if ($this->aTrack !== null && $this->aTrack->getId() !== $v) {
@@ -126,7 +110,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * Set the value of [channel_id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     Community The current object (for fluent API support)
+	 * @return     ChannelTrack The current object (for fluent API support)
 	 */
 	public function setChannelId($v)
 	{
@@ -136,7 +120,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 
 		if ($this->channel_id !== $v) {
 			$this->channel_id = $v;
-			$this->modifiedColumns[] = CommunityPeer::CHANNEL_ID;
+			$this->modifiedColumns[] = ChannelTrackPeer::CHANNEL_ID;
 		}
 
 		if ($this->aChannel !== null && $this->aChannel->getId() !== $v) {
@@ -145,26 +129,6 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 
 		return $this;
 	} // setChannelId()
-
-	/**
-	 * Set the value of [play_count] column.
-	 * 
-	 * @param      int $v new value
-	 * @return     Community The current object (for fluent API support)
-	 */
-	public function setPlayCount($v)
-	{
-		if ($v !== null) {
-			$v = (int) $v;
-		}
-
-		if ($this->play_count !== $v) {
-			$this->play_count = $v;
-			$this->modifiedColumns[] = CommunityPeer::PLAY_COUNT;
-		}
-
-		return $this;
-	} // setPlayCount()
 
 	/**
 	 * Indicates whether the columns in this object are only set to default values.
@@ -200,7 +164,6 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 
 			$this->track_id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
 			$this->channel_id = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
-			$this->play_count = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -210,10 +173,10 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 3; // 3 = CommunityPeer::NUM_COLUMNS - CommunityPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 2; // 2 = ChannelTrackPeer::NUM_COLUMNS - ChannelTrackPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating Community object", $e);
+			throw new PropelException("Error populating ChannelTrack object", $e);
 		}
 	}
 
@@ -262,13 +225,13 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(CommunityPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(ChannelTrackPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		// We don't need to alter the object instance pool; we're just modifying this instance
 		// already in the pool.
 
-		$stmt = CommunityPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$stmt = ChannelTrackPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
 		$row = $stmt->fetch(PDO::FETCH_NUM);
 		$stmt->closeCursor();
 		if (!$row) {
@@ -299,14 +262,14 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(CommunityPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(ChannelTrackPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
 			$ret = $this->preDelete($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseCommunity:delete:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseChannelTrack:delete:pre') as $callable)
 			{
 			  if (call_user_func($callable, $this, $con))
 			  {
@@ -317,10 +280,10 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 			}
 
 			if ($ret) {
-				CommunityPeer::doDelete($this, $con);
+				ChannelTrackPeer::doDelete($this, $con);
 				$this->postDelete($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseCommunity:delete:post') as $callable)
+				foreach (sfMixer::getCallables('BaseChannelTrack:delete:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con);
 				}
@@ -356,7 +319,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(CommunityPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(ChannelTrackPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
@@ -364,7 +327,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 		try {
 			$ret = $this->preSave($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseCommunity:save:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseChannelTrack:save:pre') as $callable)
 			{
 			  if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
 			  {
@@ -388,12 +351,12 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 				}
 				$this->postSave($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseCommunity:save:post') as $callable)
+				foreach (sfMixer::getCallables('BaseChannelTrack:save:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con, $affectedRows);
 				}
 
-				CommunityPeer::addInstanceToPool($this);
+				ChannelTrackPeer::addInstanceToPool($this);
 			} else {
 				$affectedRows = 0;
 			}
@@ -445,14 +408,14 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = CommunityPeer::doInsert($this, $con);
+					$pk = ChannelTrackPeer::doInsert($this, $con);
 					$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
 
 					$this->setNew(false);
 				} else {
-					$affectedRows += CommunityPeer::doUpdate($this, $con);
+					$affectedRows += ChannelTrackPeer::doUpdate($this, $con);
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
@@ -542,7 +505,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 			}
 
 
-			if (($retval = CommunityPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = ChannelTrackPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
@@ -565,7 +528,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = CommunityPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = ChannelTrackPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		$field = $this->getByPosition($pos);
 		return $field;
 	}
@@ -586,9 +549,6 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 			case 1:
 				return $this->getChannelId();
 				break;
-			case 2:
-				return $this->getPlayCount();
-				break;
 			default:
 				return null;
 				break;
@@ -608,11 +568,10 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
 	{
-		$keys = CommunityPeer::getFieldNames($keyType);
+		$keys = ChannelTrackPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getTrackId(),
 			$keys[1] => $this->getChannelId(),
-			$keys[2] => $this->getPlayCount(),
 		);
 		return $result;
 	}
@@ -629,7 +588,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = CommunityPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = ChannelTrackPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -649,9 +608,6 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 				break;
 			case 1:
 				$this->setChannelId($value);
-				break;
-			case 2:
-				$this->setPlayCount($value);
 				break;
 		} // switch()
 	}
@@ -675,11 +631,10 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = CommunityPeer::getFieldNames($keyType);
+		$keys = ChannelTrackPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setTrackId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setChannelId($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setPlayCount($arr[$keys[2]]);
 	}
 
 	/**
@@ -689,11 +644,10 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(CommunityPeer::DATABASE_NAME);
+		$criteria = new Criteria(ChannelTrackPeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(CommunityPeer::TRACK_ID)) $criteria->add(CommunityPeer::TRACK_ID, $this->track_id);
-		if ($this->isColumnModified(CommunityPeer::CHANNEL_ID)) $criteria->add(CommunityPeer::CHANNEL_ID, $this->channel_id);
-		if ($this->isColumnModified(CommunityPeer::PLAY_COUNT)) $criteria->add(CommunityPeer::PLAY_COUNT, $this->play_count);
+		if ($this->isColumnModified(ChannelTrackPeer::TRACK_ID)) $criteria->add(ChannelTrackPeer::TRACK_ID, $this->track_id);
+		if ($this->isColumnModified(ChannelTrackPeer::CHANNEL_ID)) $criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->channel_id);
 
 		return $criteria;
 	}
@@ -708,43 +662,31 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(CommunityPeer::DATABASE_NAME);
+		$criteria = new Criteria(ChannelTrackPeer::DATABASE_NAME);
 
-		$criteria->add(CommunityPeer::TRACK_ID, $this->track_id);
-		$criteria->add(CommunityPeer::CHANNEL_ID, $this->channel_id);
+		$criteria->add(ChannelTrackPeer::TRACK_ID, $this->track_id);
 
 		return $criteria;
 	}
 
 	/**
-	 * Returns the composite primary key for this object.
-	 * The array elements will be in same order as specified in XML.
-	 * @return     array
+	 * Returns the primary key for this object (row).
+	 * @return     int
 	 */
 	public function getPrimaryKey()
 	{
-		$pks = array();
-
-		$pks[0] = $this->getTrackId();
-
-		$pks[1] = $this->getChannelId();
-
-		return $pks;
+		return $this->getTrackId();
 	}
 
 	/**
-	 * Set the [composite] primary key.
+	 * Generic method to set the primary key (track_id column).
 	 *
-	 * @param      array $keys The elements of the composite key (order must match the order in XML file).
+	 * @param      int $key Primary key.
 	 * @return     void
 	 */
-	public function setPrimaryKey($keys)
+	public function setPrimaryKey($key)
 	{
-
-		$this->setTrackId($keys[0]);
-
-		$this->setChannelId($keys[1]);
-
+		$this->setTrackId($key);
 	}
 
 	/**
@@ -753,7 +695,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * If desired, this method can also make copies of all associated (fkey referrers)
 	 * objects.
 	 *
-	 * @param      object $copyObj An object of Community (or compatible) type.
+	 * @param      object $copyObj An object of ChannelTrack (or compatible) type.
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
 	 * @throws     PropelException
 	 */
@@ -763,8 +705,6 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 		$copyObj->setTrackId($this->track_id);
 
 		$copyObj->setChannelId($this->channel_id);
-
-		$copyObj->setPlayCount($this->play_count);
 
 
 		$copyObj->setNew(true);
@@ -780,7 +720,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * objects.
 	 *
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-	 * @return     Community Clone of current object.
+	 * @return     ChannelTrack Clone of current object.
 	 * @throws     PropelException
 	 */
 	public function copy($deepCopy = false)
@@ -799,12 +739,12 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * same instance for all member of this class. The method could therefore
 	 * be static, but this would prevent one from overriding the behavior.
 	 *
-	 * @return     CommunityPeer
+	 * @return     ChannelTrackPeer
 	 */
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new CommunityPeer();
+			self::$peer = new ChannelTrackPeer();
 		}
 		return self::$peer;
 	}
@@ -813,7 +753,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * Declares an association between this object and a Track object.
 	 *
 	 * @param      Track $v
-	 * @return     Community The current object (for fluent API support)
+	 * @return     ChannelTrack The current object (for fluent API support)
 	 * @throws     PropelException
 	 */
 	public function setTrack(Track $v = null)
@@ -826,10 +766,9 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 
 		$this->aTrack = $v;
 
-		// Add binding for other direction of this n:n relationship.
-		// If this object has already been added to the Track object, it will not be re-added.
+		// Add binding for other direction of this 1:1 relationship.
 		if ($v !== null) {
-			$v->addCommunity($this);
+			$v->setChannelTrack($this);
 		}
 
 		return $this;
@@ -847,13 +786,8 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	{
 		if ($this->aTrack === null && ($this->track_id !== null)) {
 			$this->aTrack = TrackPeer::retrieveByPk($this->track_id);
-			/* The following can be used additionally to
-			   guarantee the related object contains a reference
-			   to this object.  This level of coupling may, however, be
-			   undesirable since it could result in an only partially populated collection
-			   in the referenced object.
-			   $this->aTrack->addCommunitys($this);
-			 */
+			// Because this foreign key represents a one-to-one relationship, we will create a bi-directional association.
+			$this->aTrack->setChannelTrack($this);
 		}
 		return $this->aTrack;
 	}
@@ -862,7 +796,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 * Declares an association between this object and a Channel object.
 	 *
 	 * @param      Channel $v
-	 * @return     Community The current object (for fluent API support)
+	 * @return     ChannelTrack The current object (for fluent API support)
 	 * @throws     PropelException
 	 */
 	public function setChannel(Channel $v = null)
@@ -878,7 +812,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 		// Add binding for other direction of this n:n relationship.
 		// If this object has already been added to the Channel object, it will not be re-added.
 		if ($v !== null) {
-			$v->addCommunity($this);
+			$v->addChannelTrack($this);
 		}
 
 		return $this;
@@ -901,7 +835,7 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 			   to this object.  This level of coupling may, however, be
 			   undesirable since it could result in an only partially populated collection
 			   in the referenced object.
-			   $this->aChannel->addCommunitys($this);
+			   $this->aChannel->addChannelTracks($this);
 			 */
 		}
 		return $this->aChannel;
@@ -932,9 +866,9 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	 */
 	public function __call($method, $arguments)
 	{
-	  if (!$callable = sfMixer::getCallable('BaseCommunity:'.$method))
+	  if (!$callable = sfMixer::getCallable('BaseChannelTrack:'.$method))
 	  {
-	    throw new sfException(sprintf('Call to undefined method BaseCommunity::%s', $method));
+	    throw new sfException(sprintf('Call to undefined method BaseChannelTrack::%s', $method));
 	  }
 	
 	  array_unshift($arguments, $this);
@@ -942,4 +876,4 @@ abstract class BaseCommunity extends BaseObject  implements Persistent {
 	  return call_user_func_array($callable, $arguments);
 	}
 
-} // BaseCommunity
+} // BaseChannelTrack

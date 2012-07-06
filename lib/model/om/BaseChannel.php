@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class that represents a row from the 'track' table.
+ * Base class that represents a row from the 'channel' table.
  *
  * 
  *
@@ -11,14 +11,14 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseTrack extends BaseObject  implements Persistent {
+abstract class BaseChannel extends BaseObject  implements Persistent {
 
 
 	/**
 	 * The Peer class.
 	 * Instance provides a convenient way of calling static methods on a class
 	 * that calling code may not be able to identify.
-	 * @var        TrackPeer
+	 * @var        ChannelPeer
 	 */
 	protected static $peer;
 
@@ -29,40 +29,22 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	protected $id;
 
 	/**
-	 * The value for the filename field.
-	 * @var        string
-	 */
-	protected $filename;
-
-	/**
 	 * The value for the name field.
 	 * @var        string
 	 */
 	protected $name;
 
 	/**
-	 * The value for the artist field.
+	 * The value for the port field.
 	 * @var        string
 	 */
-	protected $artist;
+	protected $port;
 
 	/**
-	 * The value for the time field.
+	 * The value for the slug field.
 	 * @var        string
 	 */
-	protected $time;
-
-	/**
-	 * The value for the genre field.
-	 * @var        string
-	 */
-	protected $genre;
-
-	/**
-	 * The value for the cover field.
-	 * @var        string
-	 */
-	protected $cover;
+	protected $slug;
 
 	/**
 	 * @var        array Community[] Collection to store aggregation of Community objects.
@@ -75,9 +57,14 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	private $lastCommunityCriteria = null;
 
 	/**
-	 * @var        ChannelTrack one-to-one related ChannelTrack object
+	 * @var        array ChannelTrack[] Collection to store aggregation of ChannelTrack objects.
 	 */
-	protected $singleChannelTrack;
+	protected $collChannelTracks;
+
+	/**
+	 * @var        Criteria The criteria used to select the current contents of collChannelTracks.
+	 */
+	private $lastChannelTrackCriteria = null;
 
 	/**
 	 * @var        array TrackVote[] Collection to store aggregation of TrackVote objects.
@@ -105,7 +92,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 
 	// symfony behavior
 	
-	const PEER = 'TrackPeer';
+	const PEER = 'ChannelPeer';
 
 	/**
 	 * Get the [id] column value.
@@ -115,16 +102,6 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	public function getId()
 	{
 		return $this->id;
-	}
-
-	/**
-	 * Get the [filename] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getFilename()
-	{
-		return $this->filename;
 	}
 
 	/**
@@ -138,50 +115,30 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [artist] column value.
+	 * Get the [port] column value.
 	 * 
 	 * @return     string
 	 */
-	public function getArtist()
+	public function getPort()
 	{
-		return $this->artist;
+		return $this->port;
 	}
 
 	/**
-	 * Get the [time] column value.
+	 * Get the [slug] column value.
 	 * 
 	 * @return     string
 	 */
-	public function getTime()
+	public function getSlug()
 	{
-		return $this->time;
-	}
-
-	/**
-	 * Get the [genre] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getGenre()
-	{
-		return $this->genre;
-	}
-
-	/**
-	 * Get the [cover] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getCover()
-	{
-		return $this->cover;
+		return $this->slug;
 	}
 
 	/**
 	 * Set the value of [id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     Track The current object (for fluent API support)
+	 * @return     Channel The current object (for fluent API support)
 	 */
 	public function setId($v)
 	{
@@ -191,37 +148,17 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 
 		if ($this->id !== $v) {
 			$this->id = $v;
-			$this->modifiedColumns[] = TrackPeer::ID;
+			$this->modifiedColumns[] = ChannelPeer::ID;
 		}
 
 		return $this;
 	} // setId()
 
 	/**
-	 * Set the value of [filename] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     Track The current object (for fluent API support)
-	 */
-	public function setFilename($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->filename !== $v) {
-			$this->filename = $v;
-			$this->modifiedColumns[] = TrackPeer::FILENAME;
-		}
-
-		return $this;
-	} // setFilename()
-
-	/**
 	 * Set the value of [name] column.
 	 * 
 	 * @param      string $v new value
-	 * @return     Track The current object (for fluent API support)
+	 * @return     Channel The current object (for fluent API support)
 	 */
 	public function setName($v)
 	{
@@ -231,91 +168,51 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 
 		if ($this->name !== $v) {
 			$this->name = $v;
-			$this->modifiedColumns[] = TrackPeer::NAME;
+			$this->modifiedColumns[] = ChannelPeer::NAME;
 		}
 
 		return $this;
 	} // setName()
 
 	/**
-	 * Set the value of [artist] column.
+	 * Set the value of [port] column.
 	 * 
 	 * @param      string $v new value
-	 * @return     Track The current object (for fluent API support)
+	 * @return     Channel The current object (for fluent API support)
 	 */
-	public function setArtist($v)
+	public function setPort($v)
 	{
 		if ($v !== null) {
 			$v = (string) $v;
 		}
 
-		if ($this->artist !== $v) {
-			$this->artist = $v;
-			$this->modifiedColumns[] = TrackPeer::ARTIST;
+		if ($this->port !== $v) {
+			$this->port = $v;
+			$this->modifiedColumns[] = ChannelPeer::PORT;
 		}
 
 		return $this;
-	} // setArtist()
+	} // setPort()
 
 	/**
-	 * Set the value of [time] column.
+	 * Set the value of [slug] column.
 	 * 
 	 * @param      string $v new value
-	 * @return     Track The current object (for fluent API support)
+	 * @return     Channel The current object (for fluent API support)
 	 */
-	public function setTime($v)
+	public function setSlug($v)
 	{
 		if ($v !== null) {
 			$v = (string) $v;
 		}
 
-		if ($this->time !== $v) {
-			$this->time = $v;
-			$this->modifiedColumns[] = TrackPeer::TIME;
+		if ($this->slug !== $v) {
+			$this->slug = $v;
+			$this->modifiedColumns[] = ChannelPeer::SLUG;
 		}
 
 		return $this;
-	} // setTime()
-
-	/**
-	 * Set the value of [genre] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     Track The current object (for fluent API support)
-	 */
-	public function setGenre($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->genre !== $v) {
-			$this->genre = $v;
-			$this->modifiedColumns[] = TrackPeer::GENRE;
-		}
-
-		return $this;
-	} // setGenre()
-
-	/**
-	 * Set the value of [cover] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     Track The current object (for fluent API support)
-	 */
-	public function setCover($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->cover !== $v) {
-			$this->cover = $v;
-			$this->modifiedColumns[] = TrackPeer::COVER;
-		}
-
-		return $this;
-	} // setCover()
+	} // setSlug()
 
 	/**
 	 * Indicates whether the columns in this object are only set to default values.
@@ -350,12 +247,9 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		try {
 
 			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
-			$this->filename = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
-			$this->name = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-			$this->artist = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-			$this->time = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-			$this->genre = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
-			$this->cover = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
+			$this->name = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
+			$this->port = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
+			$this->slug = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -365,10 +259,10 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 7; // 7 = TrackPeer::NUM_COLUMNS - TrackPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 4; // 4 = ChannelPeer::NUM_COLUMNS - ChannelPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating Track object", $e);
+			throw new PropelException("Error populating Channel object", $e);
 		}
 	}
 
@@ -411,13 +305,13 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(TrackPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(ChannelPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		// We don't need to alter the object instance pool; we're just modifying this instance
 		// already in the pool.
 
-		$stmt = TrackPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$stmt = ChannelPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
 		$row = $stmt->fetch(PDO::FETCH_NUM);
 		$stmt->closeCursor();
 		if (!$row) {
@@ -430,7 +324,8 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			$this->collCommunitys = null;
 			$this->lastCommunityCriteria = null;
 
-			$this->singleChannelTrack = null;
+			$this->collChannelTracks = null;
+			$this->lastChannelTrackCriteria = null;
 
 			$this->collTrackVotes = null;
 			$this->lastTrackVoteCriteria = null;
@@ -454,14 +349,14 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(TrackPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(ChannelPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
 			$ret = $this->preDelete($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseTrack:delete:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseChannel:delete:pre') as $callable)
 			{
 			  if (call_user_func($callable, $this, $con))
 			  {
@@ -472,10 +367,10 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			}
 
 			if ($ret) {
-				TrackPeer::doDelete($this, $con);
+				ChannelPeer::doDelete($this, $con);
 				$this->postDelete($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseTrack:delete:post') as $callable)
+				foreach (sfMixer::getCallables('BaseChannel:delete:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con);
 				}
@@ -511,7 +406,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(TrackPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(ChannelPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
@@ -519,7 +414,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		try {
 			$ret = $this->preSave($con);
 			// symfony_behaviors behavior
-			foreach (sfMixer::getCallables('BaseTrack:save:pre') as $callable)
+			foreach (sfMixer::getCallables('BaseChannel:save:pre') as $callable)
 			{
 			  if (is_integer($affectedRows = call_user_func($callable, $this, $con)))
 			  {
@@ -543,12 +438,12 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				}
 				$this->postSave($con);
 				// symfony_behaviors behavior
-				foreach (sfMixer::getCallables('BaseTrack:save:post') as $callable)
+				foreach (sfMixer::getCallables('BaseChannel:save:post') as $callable)
 				{
 				  call_user_func($callable, $this, $con, $affectedRows);
 				}
 
-				TrackPeer::addInstanceToPool($this);
+				ChannelPeer::addInstanceToPool($this);
 			} else {
 				$affectedRows = 0;
 			}
@@ -578,13 +473,13 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			$this->alreadyInSave = true;
 
 			if ($this->isNew() ) {
-				$this->modifiedColumns[] = TrackPeer::ID;
+				$this->modifiedColumns[] = ChannelPeer::ID;
 			}
 
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = TrackPeer::doInsert($this, $con);
+					$pk = ChannelPeer::doInsert($this, $con);
 					$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
@@ -593,7 +488,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 
 					$this->setNew(false);
 				} else {
-					$affectedRows += TrackPeer::doUpdate($this, $con);
+					$affectedRows += ChannelPeer::doUpdate($this, $con);
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
@@ -607,9 +502,11 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->singleChannelTrack !== null) {
-				if (!$this->singleChannelTrack->isDeleted()) {
-						$affectedRows += $this->singleChannelTrack->save($con);
+			if ($this->collChannelTracks !== null) {
+				foreach ($this->collChannelTracks as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
 				}
 			}
 
@@ -687,7 +584,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			$failureMap = array();
 
 
-			if (($retval = TrackPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = ChannelPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
@@ -700,9 +597,11 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 					}
 				}
 
-				if ($this->singleChannelTrack !== null) {
-					if (!$this->singleChannelTrack->validate($columns)) {
-						$failureMap = array_merge($failureMap, $this->singleChannelTrack->getValidationFailures());
+				if ($this->collChannelTracks !== null) {
+					foreach ($this->collChannelTracks as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
 					}
 				}
 
@@ -732,7 +631,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = TrackPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = ChannelPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		$field = $this->getByPosition($pos);
 		return $field;
 	}
@@ -751,22 +650,13 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getFilename();
-				break;
-			case 2:
 				return $this->getName();
 				break;
+			case 2:
+				return $this->getPort();
+				break;
 			case 3:
-				return $this->getArtist();
-				break;
-			case 4:
-				return $this->getTime();
-				break;
-			case 5:
-				return $this->getGenre();
-				break;
-			case 6:
-				return $this->getCover();
+				return $this->getSlug();
 				break;
 			default:
 				return null;
@@ -787,15 +677,12 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
 	{
-		$keys = TrackPeer::getFieldNames($keyType);
+		$keys = ChannelPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getFilename(),
-			$keys[2] => $this->getName(),
-			$keys[3] => $this->getArtist(),
-			$keys[4] => $this->getTime(),
-			$keys[5] => $this->getGenre(),
-			$keys[6] => $this->getCover(),
+			$keys[1] => $this->getName(),
+			$keys[2] => $this->getPort(),
+			$keys[3] => $this->getSlug(),
 		);
 		return $result;
 	}
@@ -812,7 +699,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = TrackPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = ChannelPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -831,22 +718,13 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setFilename($value);
-				break;
-			case 2:
 				$this->setName($value);
 				break;
+			case 2:
+				$this->setPort($value);
+				break;
 			case 3:
-				$this->setArtist($value);
-				break;
-			case 4:
-				$this->setTime($value);
-				break;
-			case 5:
-				$this->setGenre($value);
-				break;
-			case 6:
-				$this->setCover($value);
+				$this->setSlug($value);
 				break;
 		} // switch()
 	}
@@ -870,15 +748,12 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = TrackPeer::getFieldNames($keyType);
+		$keys = ChannelPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setFilename($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setName($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setArtist($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setTime($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setGenre($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setCover($arr[$keys[6]]);
+		if (array_key_exists($keys[1], $arr)) $this->setName($arr[$keys[1]]);
+		if (array_key_exists($keys[2], $arr)) $this->setPort($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setSlug($arr[$keys[3]]);
 	}
 
 	/**
@@ -888,15 +763,12 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+		$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(TrackPeer::ID)) $criteria->add(TrackPeer::ID, $this->id);
-		if ($this->isColumnModified(TrackPeer::FILENAME)) $criteria->add(TrackPeer::FILENAME, $this->filename);
-		if ($this->isColumnModified(TrackPeer::NAME)) $criteria->add(TrackPeer::NAME, $this->name);
-		if ($this->isColumnModified(TrackPeer::ARTIST)) $criteria->add(TrackPeer::ARTIST, $this->artist);
-		if ($this->isColumnModified(TrackPeer::TIME)) $criteria->add(TrackPeer::TIME, $this->time);
-		if ($this->isColumnModified(TrackPeer::GENRE)) $criteria->add(TrackPeer::GENRE, $this->genre);
-		if ($this->isColumnModified(TrackPeer::COVER)) $criteria->add(TrackPeer::COVER, $this->cover);
+		if ($this->isColumnModified(ChannelPeer::ID)) $criteria->add(ChannelPeer::ID, $this->id);
+		if ($this->isColumnModified(ChannelPeer::NAME)) $criteria->add(ChannelPeer::NAME, $this->name);
+		if ($this->isColumnModified(ChannelPeer::PORT)) $criteria->add(ChannelPeer::PORT, $this->port);
+		if ($this->isColumnModified(ChannelPeer::SLUG)) $criteria->add(ChannelPeer::SLUG, $this->slug);
 
 		return $criteria;
 	}
@@ -911,9 +783,9 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+		$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 
-		$criteria->add(TrackPeer::ID, $this->id);
+		$criteria->add(ChannelPeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -944,24 +816,18 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 * If desired, this method can also make copies of all associated (fkey referrers)
 	 * objects.
 	 *
-	 * @param      object $copyObj An object of Track (or compatible) type.
+	 * @param      object $copyObj An object of Channel (or compatible) type.
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
 	 * @throws     PropelException
 	 */
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setFilename($this->filename);
-
 		$copyObj->setName($this->name);
 
-		$copyObj->setArtist($this->artist);
+		$copyObj->setPort($this->port);
 
-		$copyObj->setTime($this->time);
-
-		$copyObj->setGenre($this->genre);
-
-		$copyObj->setCover($this->cover);
+		$copyObj->setSlug($this->slug);
 
 
 		if ($deepCopy) {
@@ -975,9 +841,10 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				}
 			}
 
-			$relObj = $this->getChannelTrack();
-			if ($relObj) {
-				$copyObj->setChannelTrack($relObj->copy($deepCopy));
+			foreach ($this->getChannelTracks() as $relObj) {
+				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+					$copyObj->addChannelTrack($relObj->copy($deepCopy));
+				}
 			}
 
 			foreach ($this->getTrackVotes() as $relObj) {
@@ -1004,7 +871,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 * objects.
 	 *
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-	 * @return     Track Clone of current object.
+	 * @return     Channel Clone of current object.
 	 * @throws     PropelException
 	 */
 	public function copy($deepCopy = false)
@@ -1023,12 +890,12 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 * same instance for all member of this class. The method could therefore
 	 * be static, but this would prevent one from overriding the behavior.
 	 *
-	 * @return     TrackPeer
+	 * @return     ChannelPeer
 	 */
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new TrackPeer();
+			self::$peer = new ChannelPeer();
 		}
 		return self::$peer;
 	}
@@ -1065,8 +932,8 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 * Gets an array of Community objects which contain a foreign key that references this object.
 	 *
 	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
-	 * Otherwise if this Track has previously been saved, it will retrieve
-	 * related Communitys from storage. If this Track is new, it will return
+	 * Otherwise if this Channel has previously been saved, it will retrieve
+	 * related Communitys from storage. If this Channel is new, it will return
 	 * an empty collection or the current collection, the criteria is ignored on a new object.
 	 *
 	 * @param      PropelPDO $con
@@ -1077,7 +944,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	public function getCommunitys($criteria = null, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
@@ -1089,7 +956,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			   $this->collCommunitys = array();
 			} else {
 
-				$criteria->add(CommunityPeer::TRACK_ID, $this->id);
+				$criteria->add(CommunityPeer::CHANNEL_ID, $this->id);
 
 				CommunityPeer::addSelectColumns($criteria);
 				$this->collCommunitys = CommunityPeer::doSelect($criteria, $con);
@@ -1102,7 +969,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				// one, just return the collection.
 
 
-				$criteria->add(CommunityPeer::TRACK_ID, $this->id);
+				$criteria->add(CommunityPeer::CHANNEL_ID, $this->id);
 
 				CommunityPeer::addSelectColumns($criteria);
 				if (!isset($this->lastCommunityCriteria) || !$this->lastCommunityCriteria->equals($criteria)) {
@@ -1126,7 +993,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	public function countCommunitys(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 		} else {
 			$criteria = clone $criteria;
 		}
@@ -1142,7 +1009,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				$count = 0;
 			} else {
 
-				$criteria->add(CommunityPeer::TRACK_ID, $this->id);
+				$criteria->add(CommunityPeer::CHANNEL_ID, $this->id);
 
 				$count = CommunityPeer::doCount($criteria, false, $con);
 			}
@@ -1154,7 +1021,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				// one, just return count of the collection.
 
 
-				$criteria->add(CommunityPeer::TRACK_ID, $this->id);
+				$criteria->add(CommunityPeer::CHANNEL_ID, $this->id);
 
 				if (!isset($this->lastCommunityCriteria) || !$this->lastCommunityCriteria->equals($criteria)) {
 					$count = CommunityPeer::doCount($criteria, false, $con);
@@ -1183,7 +1050,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		}
 		if (!in_array($l, $this->collCommunitys, true)) { // only add it if the **same** object is not already associated
 			array_push($this->collCommunitys, $l);
-			$l->setTrack($this);
+			$l->setChannel($this);
 		}
 	}
 
@@ -1191,18 +1058,18 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	/**
 	 * If this collection has already been initialized with
 	 * an identical criteria, it returns the collection.
-	 * Otherwise if this Track is new, it will return
-	 * an empty collection; or if this Track has previously
+	 * Otherwise if this Channel is new, it will return
+	 * an empty collection; or if this Channel has previously
 	 * been saved, it will retrieve related Communitys from storage.
 	 *
 	 * This method is protected by default in order to keep the public
 	 * api reasonable.  You can provide public methods for those you
-	 * actually need in Track.
+	 * actually need in Channel.
 	 */
-	public function getCommunitysJoinChannel($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public function getCommunitysJoinTrack($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
@@ -1214,19 +1081,19 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				$this->collCommunitys = array();
 			} else {
 
-				$criteria->add(CommunityPeer::TRACK_ID, $this->id);
+				$criteria->add(CommunityPeer::CHANNEL_ID, $this->id);
 
-				$this->collCommunitys = CommunityPeer::doSelectJoinChannel($criteria, $con, $join_behavior);
+				$this->collCommunitys = CommunityPeer::doSelectJoinTrack($criteria, $con, $join_behavior);
 			}
 		} else {
 			// the following code is to determine if a new query is
 			// called for.  If the criteria is the same as the last
 			// one, just return the collection.
 
-			$criteria->add(CommunityPeer::TRACK_ID, $this->id);
+			$criteria->add(CommunityPeer::CHANNEL_ID, $this->id);
 
 			if (!isset($this->lastCommunityCriteria) || !$this->lastCommunityCriteria->equals($criteria)) {
-				$this->collCommunitys = CommunityPeer::doSelectJoinChannel($criteria, $con, $join_behavior);
+				$this->collCommunitys = CommunityPeer::doSelectJoinTrack($criteria, $con, $join_behavior);
 			}
 		}
 		$this->lastCommunityCriteria = $criteria;
@@ -1235,39 +1102,204 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Gets a single ChannelTrack object, which is related to this object by a one-to-one relationship.
+	 * Clears out the collChannelTracks collection (array).
 	 *
-	 * @param      PropelPDO $con
-	 * @return     ChannelTrack
-	 * @throws     PropelException
+	 * This does not modify the database; however, it will remove any associated objects, causing
+	 * them to be refetched by subsequent calls to accessor method.
+	 *
+	 * @return     void
+	 * @see        addChannelTracks()
 	 */
-	public function getChannelTrack(PropelPDO $con = null)
+	public function clearChannelTracks()
 	{
-
-		if ($this->singleChannelTrack === null && !$this->isNew()) {
-			$this->singleChannelTrack = ChannelTrackPeer::retrieveByPK($this->id, $con);
-		}
-
-		return $this->singleChannelTrack;
+		$this->collChannelTracks = null; // important to set this to NULL since that means it is uninitialized
 	}
 
 	/**
-	 * Sets a single ChannelTrack object as related to this object by a one-to-one relationship.
+	 * Initializes the collChannelTracks collection (array).
 	 *
-	 * @param      ChannelTrack $l ChannelTrack
-	 * @return     Track The current object (for fluent API support)
+	 * By default this just sets the collChannelTracks collection to an empty array (like clearcollChannelTracks());
+	 * however, you may wish to override this method in your stub class to provide setting appropriate
+	 * to your application -- for example, setting the initial array to the values stored in database.
+	 *
+	 * @return     void
+	 */
+	public function initChannelTracks()
+	{
+		$this->collChannelTracks = array();
+	}
+
+	/**
+	 * Gets an array of ChannelTrack objects which contain a foreign key that references this object.
+	 *
+	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
+	 * Otherwise if this Channel has previously been saved, it will retrieve
+	 * related ChannelTracks from storage. If this Channel is new, it will return
+	 * an empty collection or the current collection, the criteria is ignored on a new object.
+	 *
+	 * @param      PropelPDO $con
+	 * @param      Criteria $criteria
+	 * @return     array ChannelTrack[]
 	 * @throws     PropelException
 	 */
-	public function setChannelTrack(ChannelTrack $v)
+	public function getChannelTracks($criteria = null, PropelPDO $con = null)
 	{
-		$this->singleChannelTrack = $v;
-
-		// Make sure that that the passed-in ChannelTrack isn't already associated with this object
-		if ($v->getTrack() === null) {
-			$v->setTrack($this);
+		if ($criteria === null) {
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
 		}
 
-		return $this;
+		if ($this->collChannelTracks === null) {
+			if ($this->isNew()) {
+			   $this->collChannelTracks = array();
+			} else {
+
+				$criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->id);
+
+				ChannelTrackPeer::addSelectColumns($criteria);
+				$this->collChannelTracks = ChannelTrackPeer::doSelect($criteria, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return the collection.
+
+
+				$criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->id);
+
+				ChannelTrackPeer::addSelectColumns($criteria);
+				if (!isset($this->lastChannelTrackCriteria) || !$this->lastChannelTrackCriteria->equals($criteria)) {
+					$this->collChannelTracks = ChannelTrackPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastChannelTrackCriteria = $criteria;
+		return $this->collChannelTracks;
+	}
+
+	/**
+	 * Returns the number of related ChannelTrack objects.
+	 *
+	 * @param      Criteria $criteria
+	 * @param      boolean $distinct
+	 * @param      PropelPDO $con
+	 * @return     int Count of related ChannelTrack objects.
+	 * @throws     PropelException
+	 */
+	public function countChannelTracks(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
+		} else {
+			$criteria = clone $criteria;
+		}
+
+		if ($distinct) {
+			$criteria->setDistinct();
+		}
+
+		$count = null;
+
+		if ($this->collChannelTracks === null) {
+			if ($this->isNew()) {
+				$count = 0;
+			} else {
+
+				$criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->id);
+
+				$count = ChannelTrackPeer::doCount($criteria, false, $con);
+			}
+		} else {
+			// criteria has no effect for a new object
+			if (!$this->isNew()) {
+				// the following code is to determine if a new query is
+				// called for.  If the criteria is the same as the last
+				// one, just return count of the collection.
+
+
+				$criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->id);
+
+				if (!isset($this->lastChannelTrackCriteria) || !$this->lastChannelTrackCriteria->equals($criteria)) {
+					$count = ChannelTrackPeer::doCount($criteria, false, $con);
+				} else {
+					$count = count($this->collChannelTracks);
+				}
+			} else {
+				$count = count($this->collChannelTracks);
+			}
+		}
+		return $count;
+	}
+
+	/**
+	 * Method called to associate a ChannelTrack object to this object
+	 * through the ChannelTrack foreign key attribute.
+	 *
+	 * @param      ChannelTrack $l ChannelTrack
+	 * @return     void
+	 * @throws     PropelException
+	 */
+	public function addChannelTrack(ChannelTrack $l)
+	{
+		if ($this->collChannelTracks === null) {
+			$this->initChannelTracks();
+		}
+		if (!in_array($l, $this->collChannelTracks, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collChannelTracks, $l);
+			$l->setChannel($this);
+		}
+	}
+
+
+	/**
+	 * If this collection has already been initialized with
+	 * an identical criteria, it returns the collection.
+	 * Otherwise if this Channel is new, it will return
+	 * an empty collection; or if this Channel has previously
+	 * been saved, it will retrieve related ChannelTracks from storage.
+	 *
+	 * This method is protected by default in order to keep the public
+	 * api reasonable.  You can provide public methods for those you
+	 * actually need in Channel.
+	 */
+	public function getChannelTracksJoinTrack($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	{
+		if ($criteria === null) {
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collChannelTracks === null) {
+			if ($this->isNew()) {
+				$this->collChannelTracks = array();
+			} else {
+
+				$criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->id);
+
+				$this->collChannelTracks = ChannelTrackPeer::doSelectJoinTrack($criteria, $con, $join_behavior);
+			}
+		} else {
+			// the following code is to determine if a new query is
+			// called for.  If the criteria is the same as the last
+			// one, just return the collection.
+
+			$criteria->add(ChannelTrackPeer::CHANNEL_ID, $this->id);
+
+			if (!isset($this->lastChannelTrackCriteria) || !$this->lastChannelTrackCriteria->equals($criteria)) {
+				$this->collChannelTracks = ChannelTrackPeer::doSelectJoinTrack($criteria, $con, $join_behavior);
+			}
+		}
+		$this->lastChannelTrackCriteria = $criteria;
+
+		return $this->collChannelTracks;
 	}
 
 	/**
@@ -1302,8 +1334,8 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 * Gets an array of TrackVote objects which contain a foreign key that references this object.
 	 *
 	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
-	 * Otherwise if this Track has previously been saved, it will retrieve
-	 * related TrackVotes from storage. If this Track is new, it will return
+	 * Otherwise if this Channel has previously been saved, it will retrieve
+	 * related TrackVotes from storage. If this Channel is new, it will return
 	 * an empty collection or the current collection, the criteria is ignored on a new object.
 	 *
 	 * @param      PropelPDO $con
@@ -1314,7 +1346,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	public function getTrackVotes($criteria = null, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
@@ -1326,7 +1358,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 			   $this->collTrackVotes = array();
 			} else {
 
-				$criteria->add(TrackVotePeer::TRACK_ID, $this->id);
+				$criteria->add(TrackVotePeer::CHANNEL_ID, $this->id);
 
 				TrackVotePeer::addSelectColumns($criteria);
 				$this->collTrackVotes = TrackVotePeer::doSelect($criteria, $con);
@@ -1339,7 +1371,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				// one, just return the collection.
 
 
-				$criteria->add(TrackVotePeer::TRACK_ID, $this->id);
+				$criteria->add(TrackVotePeer::CHANNEL_ID, $this->id);
 
 				TrackVotePeer::addSelectColumns($criteria);
 				if (!isset($this->lastTrackVoteCriteria) || !$this->lastTrackVoteCriteria->equals($criteria)) {
@@ -1363,7 +1395,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	public function countTrackVotes(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 		} else {
 			$criteria = clone $criteria;
 		}
@@ -1379,7 +1411,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				$count = 0;
 			} else {
 
-				$criteria->add(TrackVotePeer::TRACK_ID, $this->id);
+				$criteria->add(TrackVotePeer::CHANNEL_ID, $this->id);
 
 				$count = TrackVotePeer::doCount($criteria, false, $con);
 			}
@@ -1391,7 +1423,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				// one, just return count of the collection.
 
 
-				$criteria->add(TrackVotePeer::TRACK_ID, $this->id);
+				$criteria->add(TrackVotePeer::CHANNEL_ID, $this->id);
 
 				if (!isset($this->lastTrackVoteCriteria) || !$this->lastTrackVoteCriteria->equals($criteria)) {
 					$count = TrackVotePeer::doCount($criteria, false, $con);
@@ -1420,7 +1452,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		}
 		if (!in_array($l, $this->collTrackVotes, true)) { // only add it if the **same** object is not already associated
 			array_push($this->collTrackVotes, $l);
-			$l->setTrack($this);
+			$l->setChannel($this);
 		}
 	}
 
@@ -1428,18 +1460,18 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	/**
 	 * If this collection has already been initialized with
 	 * an identical criteria, it returns the collection.
-	 * Otherwise if this Track is new, it will return
-	 * an empty collection; or if this Track has previously
+	 * Otherwise if this Channel is new, it will return
+	 * an empty collection; or if this Channel has previously
 	 * been saved, it will retrieve related TrackVotes from storage.
 	 *
 	 * This method is protected by default in order to keep the public
 	 * api reasonable.  You can provide public methods for those you
-	 * actually need in Track.
+	 * actually need in Channel.
 	 */
-	public function getTrackVotesJoinChannel($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public function getTrackVotesJoinTrack($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(TrackPeer::DATABASE_NAME);
+			$criteria = new Criteria(ChannelPeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
@@ -1451,19 +1483,19 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 				$this->collTrackVotes = array();
 			} else {
 
-				$criteria->add(TrackVotePeer::TRACK_ID, $this->id);
+				$criteria->add(TrackVotePeer::CHANNEL_ID, $this->id);
 
-				$this->collTrackVotes = TrackVotePeer::doSelectJoinChannel($criteria, $con, $join_behavior);
+				$this->collTrackVotes = TrackVotePeer::doSelectJoinTrack($criteria, $con, $join_behavior);
 			}
 		} else {
 			// the following code is to determine if a new query is
 			// called for.  If the criteria is the same as the last
 			// one, just return the collection.
 
-			$criteria->add(TrackVotePeer::TRACK_ID, $this->id);
+			$criteria->add(TrackVotePeer::CHANNEL_ID, $this->id);
 
 			if (!isset($this->lastTrackVoteCriteria) || !$this->lastTrackVoteCriteria->equals($criteria)) {
-				$this->collTrackVotes = TrackVotePeer::doSelectJoinChannel($criteria, $con, $join_behavior);
+				$this->collTrackVotes = TrackVotePeer::doSelectJoinTrack($criteria, $con, $join_behavior);
 			}
 		}
 		$this->lastTrackVoteCriteria = $criteria;
@@ -1488,8 +1520,10 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 					$o->clearAllReferences($deep);
 				}
 			}
-			if ($this->singleChannelTrack) {
-				$this->singleChannelTrack->clearAllReferences($deep);
+			if ($this->collChannelTracks) {
+				foreach ((array) $this->collChannelTracks as $o) {
+					$o->clearAllReferences($deep);
+				}
 			}
 			if ($this->collTrackVotes) {
 				foreach ((array) $this->collTrackVotes as $o) {
@@ -1499,7 +1533,7 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 		} // if ($deep)
 
 		$this->collCommunitys = null;
-		$this->singleChannelTrack = null;
+		$this->collChannelTracks = null;
 		$this->collTrackVotes = null;
 	}
 
@@ -1510,9 +1544,9 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	 */
 	public function __call($method, $arguments)
 	{
-	  if (!$callable = sfMixer::getCallable('BaseTrack:'.$method))
+	  if (!$callable = sfMixer::getCallable('BaseChannel:'.$method))
 	  {
-	    throw new sfException(sprintf('Call to undefined method BaseTrack::%s', $method));
+	    throw new sfException(sprintf('Call to undefined method BaseChannel::%s', $method));
 	  }
 	
 	  array_unshift($arguments, $this);
@@ -1520,4 +1554,4 @@ abstract class BaseTrack extends BaseObject  implements Persistent {
 	  return call_user_func_array($callable, $arguments);
 	}
 
-} // BaseTrack
+} // BaseChannel

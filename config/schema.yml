@@ -4,8 +4,21 @@ propel:
     defaultIdMethod: native
   community:
     _attributes: { phpName: Community }
-    track_id: { phpName: TrackId, type: INTEGER, size: '11', primaryKey: true, required: true }
+    track_id: { phpName: TrackId, type: INTEGER, size: '11', primaryKey: true, required: true, foreignTable: track, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    channel_id: { phpName: ChannelId, type: INTEGER, size: '11', primaryKey: true, required: true, foreignTable: channel, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
     play_count: { phpName: PlayCount, type: SMALLINT, size: '6', required: false }
+    _indexes: { community_track_id: [track_id] }
+  channel:
+    _attributes: { phpName: Channel }
+    id: { phpName: Id, type: INTEGER, size: '11', autoIncrement: true, primaryKey: true, required: true }
+    name: { phpName: Name, type: VARCHAR, size: '300', required: false }
+    port: { phpName: Port, type: VARCHAR, size: '4', required: false }
+    slug: { phpName: Slug, type: VARCHAR, size: '300', required: false }
+  channel_track:
+    _attributes: { phpName: ChannelTrack }
+    track_id: { phpName: TrackId, type: INTEGER, size: '11', primaryKey: true, required: true, foreignTable: track, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    channel_id: { phpName: ChannelId, type: INTEGER, size: '11', required: true, foreignTable: channel, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    _indexes: { channel_track_id: [track_id] }
   track:
     _attributes: { phpName: Track }
     id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
@@ -18,6 +31,7 @@ propel:
   track_vote:
     _attributes: { phpName: TrackVote }
     track_id: { phpName: TrackId, type: INTEGER, size: '10', primaryKey: true, required: true, foreignTable: track, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    channel_id: { phpName: ChannelId, type: INTEGER, size: '11', primaryKey: true, required: true, foreignTable: channel, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT }
     all_votes: { phpName: AllVotes, type: INTEGER, size: '11', required: false }
     temp_votes: { phpName: TempVotes, type: INTEGER, size: '11', required: false }
     _indexes: { track_vote_id: [track_id] }

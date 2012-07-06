@@ -15,12 +15,14 @@ abstract class BaseTrackVoteForm extends BaseFormPropel
   {
     $this->setWidgets(array(
       'track_id'   => new sfWidgetFormInputHidden(),
+      'channel_id' => new sfWidgetFormInputHidden(),
       'all_votes'  => new sfWidgetFormInputText(),
       'temp_votes' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'track_id'   => new sfValidatorPropelChoice(array('model' => 'Track', 'column' => 'id', 'required' => false)),
+      'channel_id' => new sfValidatorPropelChoice(array('model' => 'Channel', 'column' => 'id', 'required' => false)),
       'all_votes'  => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'temp_votes' => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
     ));

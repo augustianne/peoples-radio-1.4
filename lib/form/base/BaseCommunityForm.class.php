@@ -15,11 +15,13 @@ abstract class BaseCommunityForm extends BaseFormPropel
   {
     $this->setWidgets(array(
       'track_id'   => new sfWidgetFormInputHidden(),
+      'channel_id' => new sfWidgetFormInputHidden(),
       'play_count' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
-      'track_id'   => new sfValidatorChoice(array('choices' => array($this->getObject()->getTrackId()), 'empty_value' => $this->getObject()->getTrackId(), 'required' => false)),
+      'track_id'   => new sfValidatorPropelChoice(array('model' => 'Track', 'column' => 'id', 'required' => false)),
+      'channel_id' => new sfValidatorPropelChoice(array('model' => 'Channel', 'column' => 'id', 'required' => false)),
       'play_count' => new sfValidatorInteger(array('min' => -32768, 'max' => 32767, 'required' => false)),
     ));
 

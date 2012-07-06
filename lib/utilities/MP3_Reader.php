@@ -24,6 +24,7 @@ class MP3_Reader {
 	            if(strtolower(substr($file, strlen($file) - 3, 3)) == "mp3"){   
 					$reader->option_tag_id3v1 = false;
 					$reader->analyze("{$dir}/{$file}");
+
 					$trackInfo = $reader->info['tags']['id3v2'];
 
 					if (isset($reader->info['id3v2']['APIC'][0]['data'])) {
