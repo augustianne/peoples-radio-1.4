@@ -20,18 +20,5 @@
 				</ul>
 			</div>
 		</article>
-		<!-- <article class="blg">
-			<h3>People's News</h3>
-			<ul>
-				<li>
-					<a href="#">Lorem ipsum</a>
-					<p>Mauris in leo nisl, quis varius felis. Donec suscipit tempor convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-				</li>
-				<li>
-					<a href="#">Lorem ipsum</a>
-					<p>Mauris in leo nisl, quis varius felis. Donec suscipit tempor convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-				</li>
-			</ul>
-		</article> -->
 	</div>
 </div>
