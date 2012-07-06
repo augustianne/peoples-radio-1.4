@@ -41,14 +41,18 @@ header { position: relative; }
 
 #chat { display: none; }
 
-div.liquid,
-div.sml    { background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.05); 
-			 min-width: 620px; padding-top: 20px; margin-top: 80px; }
+ul.sml     { margin-top: 80px;padding: 10px 20px; margin-bottom: 10px; }
+ul.sml li  { float: left; margin-right: 20px; font-size: 16px; color: #999; padding-left: 25px; } 
+.sml .last { float: right; margin: 0; }  
+.sml .user { background: transparent url('../images/user.png') no-repeat left 3px; }    
+.sml .room { background: transparent url('../images/room.png') no-repeat left 3px; }    
+
+div.liquid { background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.05); 
+			 min-width: 620px; padding-top: 20px; }
 div.cht    { float: left; padding: 0; margin-left:25px; position: relative; width: 420px; margin-top: 20px; background-color: #fff; border-radius:4px; }
 div.side   { margin-top: 10px; }
-div.sml    { display: none; }
 
-#container article { padding: 0 5.5%; margin-bottom: 2em; }
+#container article { padding: 0 20px; margin-bottom: 2em; }
 #container article + article { opacity: 0.3; background:transparent url('/images/lock.png') no-repeat center center; }
 #sidebar article { margin-bottom: 2em; }
 #container.min + #sidebar + #chat { display: block; }
@@ -56,10 +60,10 @@ div.sml    { display: none; }
 #container.min .sml { display: block; min-height: 800px; }
 #container.min .liquid { display: none; }
 
-#content { background-color: rgba(0,0,0,0.2); border-radius: 15px; margin-top: 100px; padding: 10px; position: relative; }
+#content { background-color: rgba(0,0,0,0.2); border-radius: 15px; margin-top: 100px; padding: 10px; position: relative; border: 1px solid rgba(0, 0, 0, 0.1); }
 
 /*Queue List*/
-.radio { background:transparent url('/images/albumbck.jpg') no-repeat left top; overflow: hidden; margin-bottom: 20px; border-radius:4px; box-shadow: 0 1px 2px; rgba(0, 0, 0, 0.1) }
+.radio { background:transparent url('/images/albumbck.jpg') no-repeat left top; overflow: hidden; margin-bottom: 20px; border-radius:4px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46); }
 .radio span { border-radius: 50px; border: 1px solid #bbb; color: #eee; padding: 3px 10px 2px;  text-transform: uppercase; font-size: 10px; margin-bottom: 10px; display: inline-block; opacity:0.5;}
 .radio .atr { padding: 10px 5px; } 
 .radio h3 { color: #fff; letter-spacing: 0; margin: 0; }
@@ -73,7 +77,7 @@ div.sml    { display: none; }
 .que li span { width: 85px; font-size: 15px; color: #999; margin:0 10px; }
 .que li:first-child { border-top: none; }
 .que li:last-child { border-bottom: none; }
-.side .que ul { background-color: #fff; border-radius:4px; }
+.side .que ul { background-color: #fff; border-radius:4px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);}
 .side .que li:first-child { background:transparent url('/images/sound.gif') no-repeat 395px 7px; opacity: 0.7; }
 .side .que li h4, .side .que li h4 em, .side .que li span  { font-size: 14px; }
 

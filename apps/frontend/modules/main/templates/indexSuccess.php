@@ -1,6 +1,10 @@
 <div id="container" class="grid_8">
-	<div class="sml"><h2>New song have arrived, Vote Now!</h2></div>
-	<div class="liquid bdl">
+	<ul class="sml bd">
+		<li class="room">A Room Title</li>
+		<li class="user">1020 Listeners</li>
+		<li class="last"><a href="#">Change Channel</a></li>
+	</ul>
+	<div class="liquid bd">
 		<article class="que">
 			<h2>Vote three Songs for the next Queue! :))</h2>
 			<div id="vote_queue" data-channel="<?php echo $channelId; ?>">

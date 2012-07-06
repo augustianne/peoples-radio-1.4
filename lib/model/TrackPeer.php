@@ -37,16 +37,9 @@ class TrackPeer extends BaseTrackPeer {
 
 	public static function getTracksInPlaylistCriteria(Channel $channel=null){
 		$criteria = new Criteria();
-		$criteria->addJoin(TrackPeer::ID, TrackVotePeer::TRACK_ID, Criteria::JOIN);
-
-		$communityJoin = array(
-			array(TrackVotePeer::TRACK_ID, CommunityPeer::TRACK_ID),
-			array(CommunityPeer::CHANNEL_ID, $channel->getId()),
-		);
-
-		$criteria->addMultipleJoin($communityJoin, Criteria::LEFT_JOIN);
-		$criteria->add(CommunityPeer::TRACK_ID, NULL, Criteria::ISNOTNULL);
-		$criteria->addDescendingOrderByColumn(TrackVotePeer::TEMP_VOTES);
+		$criteria->addJoin(TrackPeer::ID, CommunityPeer::TRACK_ID);
+		$criteria->add(CommunityPeer::CHANNEL_ID, $channel->getId());
+		$criteria->addAscendingOrderByColumn(CommunityPeer::SEQUENCE);
 
 		return $criteria;
 	}
@@ -55,6 +48,7 @@ class TrackPeer extends BaseTrackPeer {
 		$criteria = new Criteria();
 		$criteria->addJoin(TrackPeer::ID, TrackVotePeer::TRACK_ID);
 		$criteria->add(TrackVotePeer::CHANNEL_ID, $channel->getId());
+		$criteria->add(TrackVotePeer::TEMP_VOTES, 0, Criteria::GREATER_THAN);
 
 		$criteria->setLimit($n);
 		$criteria->addDescendingOrderByColumn(TrackVotePeer::TEMP_VOTES);

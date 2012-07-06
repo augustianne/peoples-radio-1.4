@@ -15,7 +15,7 @@ class mainComponents extends sfComponents
   {
 	$this->channel = ChannelPeer::retrieveBySlug($this->channelId);
 
-	$this->pager = new sfPropelPager('Track', 100);
+	$this->pager = new sfPropelPager('Track', 10);
 	$this->pager->setPage($request->getParameter('page', 1));
 	$this->pager->setCriteria(TrackPeer::getTracksInPlaylistCriteria($this->channel));
 	$this->pager->setPeerMethod('doSelect');

@@ -85,7 +85,7 @@ class mainActions extends sfActions
   */
   public function executeUpdatePlaylist(sfWebRequest $request)
   {
-	$this->forward404If(!$request->isXmlHttpRequest());
+	// $this->forward404If(!$request->isXmlHttpRequest());
 	
 	$this->pager = new sfPropelPager('Track', 3);
 	$this->pager->setPage($request->getParameter('page', 1));
@@ -94,7 +94,21 @@ class mainActions extends sfActions
 	$this->pager->init();      
 	
 	$this->updatePhysicalPlaylist($this->pager->getResults());
-	return $this->renderPartial('main/playlist', array('pager' => $this->pager));
+	$ret = $this->renderPartial('main/playlist', array('pager' => $this->pager));
+	TrackVotePeer::resetChannelVotes($this->channel);
+	return $ret;
+  }
+
+ /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeUpdateCoverArt(sfWebRequest $request)
+  {
+	$this->forward404If(!$request->isXmlHttpRequest());
+
+	return $this->renderPartial('main/coverArt', array('channel' => $this->channel));
   }
 
  /**
