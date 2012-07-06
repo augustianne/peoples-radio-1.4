@@ -22,7 +22,7 @@
     	 <header class="container_12">
     		<img id="lg" src="/images/logo.png" border="0" align="left" alt="People's Radio">
     		<div class="signup">
-    			<button class="button create">Create a Room!</button>
+    			<button class="button create">Create a Channel</button>
     		</div>
     	</header> 
     	<div id="content" class="container_12">
